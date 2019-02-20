@@ -394,9 +394,19 @@ footer {
     bottom: 0;
     left: 0;
     background: rgba($base-color-hover, 0.7);
-    z-index: 1;
+    z-index: 2;
 }
 
+#particles-js {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
 #lead-down {
     position: absolute;
     left: 0;
@@ -424,7 +434,11 @@ footer {
         padding-top: 5px;;
     }
 }
-
+.pulse {
+        animation: pulsate 1.5s ease;
+        animation-iteration-count: infinite;
+        padding-top: 5px;;
+    }
 @keyframes pulsate {
     0% {
         transform: scale(1, 1);
