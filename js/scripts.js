@@ -25,7 +25,7 @@
         }, 300);
 
         // Hide the menu once clicked if mobile
-        if ($('header').hasClass('active')) {offset
+        if ($('header').hasClass('active')) {
             $('header, body').removeClass('active');
         }
     });
