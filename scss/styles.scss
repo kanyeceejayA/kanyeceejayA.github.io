@@ -848,7 +848,27 @@ footer {
         padding: 0 0 0 15px;
     }
 }
-
+.clients{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+.clients div{
+    width: 40%;
+    max-width: 200px;
+}
+.clients img{
+    width: 100%;
+    margin: 0 auto;
+    transition: filter .2s ease-out,-webkit-filter .2s ease-out;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+.clients img:hover{
+    filter: grayscale(0)
+}
 /*
     -----------------------------
     ----- 12. Media Queries -----
