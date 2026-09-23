@@ -79,6 +79,7 @@
     menu.addEventListener('click', function (e) {
       var a = e.target.closest('a');
       if (a && a.getAttribute('href') && a.getAttribute('href').charAt(0) === '#') closeMenu();
+      else if (e.target.closest('[data-play], [data-desk]')) closeMenu();
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !menu.hidden) closeMenu();

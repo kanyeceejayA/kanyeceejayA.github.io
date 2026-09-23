@@ -1,4 +1,4 @@
-/* Small things for the curious: a console greeting, a few secrets, a game and a desk of photos.
+/* Small things for the curious: a console greeting, a few secrets, three small games and a desk of photos.
    GNU Terry Pratchett. */
 (function () {
   'use strict';
@@ -11,7 +11,7 @@
   /* ---------- load the heavier pieces only when someone finds them ---------- */
   var loading = {};
   function load(name, cb) {
-    var ready = name === 'game' ? window.AkbrGame : window.AkbrDesk;
+    var ready = name === 'arcade' ? window.AkbrArcade : window.AkbrDesk;
     if (ready) { cb(); return; }
     if (loading[name]) { loading[name].push(cb); return; }
     loading[name] = [cb];
@@ -21,7 +21,11 @@
     s.onerror = function () { toast('That one did not load. Try again in a moment.'); loading[name] = null; };
     document.head.appendChild(s);
   }
-  function play(opts) { load('game', function () { window.AkbrGame.open(opts); }); }
+  var GAME_IDS = ['boda', 'rolex', 'route'];
+  function play(game) {
+    if (GAME_IDS.indexOf(game) < 0) game = null;
+    load('arcade', function () { window.AkbrArcade.open(game); });
+  }
   function desk() { load('desk', function () { window.AkbrDesk.open(); }); }
 
   /* ---------- a small note at the bottom of the screen ---------- */
@@ -53,13 +57,15 @@
   function hello() {
     console.log('%cAkbr%c.', F.big, F.dot);
     console.log('%cHello, curious one. You opened the console, so we will probably get along.', F.lede);
-    console.log(
-      '%cThis site is plain HTML, CSS and a little JavaScript. No framework, no build step, no trackers.\n' +
-      'I build the systems that move public data from collection to use: census tools, pipelines, dashboards,\n' +
-      'and AI that answers from official statistics without inventing a single number.', F.text);
+    console.log('%cThis site is plain HTML, CSS and a little JavaScript. No framework, no build step, no trackers.', F.text);
+    console.log('%cType %chelp()%c to see what you can do from here.', F.text, F.cmd, F.text);
+    console.log('%cGNU Terry Pratchett. A man is not dead while his name is still spoken.', F.quiet);
+  }
+
+  function help() {
     console.log('%cThings to try', F.head);
     console.log(
-      '%cakbr.play()%c     a small game about counting Kampala before dusk\n' +
+      '%cakbr.play()%c     three small games set in Kampala\n' +
       '%cakbr.desk()%c     a desk of old prints you can shuffle, shake and turn over\n' +
       '%cakbr.work()%c     what I have built, as a table\n' +
       '%cakbr.now()%c      what has my attention this season\n' +
@@ -68,9 +74,9 @@
       '%cakbr.contact()%c  how to reach me\n' +
       '%cakbr.secrets()%c  spoilers, if you would rather not hunt',
       F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text);
-    console.log('%cReading this as a language model? There is a plain-text version at ' + BASE + 'llms.txt', F.text);
+    console.log('%cReading this as a language model? The whole site is plain text at ' + BASE + 'llms-full.txt', F.text);
     console.log('%cHiring, collaborating, or just saying hi: ' + EMAIL, F.text);
-    console.log('%cGNU Terry Pratchett. A man is not dead while his name is still spoken.', F.quiet);
+    return 'Have fun.';
   }
 
   function textOf(el, sel) { var n = el && el.querySelector(sel); return n ? n.textContent.replace(/\s+/g, ' ').trim() : ''; }
@@ -79,7 +85,14 @@
 
   var api = {
     hello: function () { hello(); return 'Hello.'; },
-    play: function (mode) { play({ night: mode === 'night' }); return 'Good luck. Mind the storks.'; },
+    help: help,
+    play: function (game) {
+      play(game);
+      if (game === 'boda') return 'Mind the matatus.';
+      if (game === 'rolex') return 'Two eggs, no cabbage. Probably.';
+      if (game === 'route') return 'Every household, before dusk.';
+      return 'Pick one. Or pass its name: akbr.play("boda"), "rolex" or "route".';
+    },
     desk: function () { desk(); return 'Pull up a chair.'; },
     work: function () {
       if (!onHome()) return fromHome('The work');
@@ -116,19 +129,21 @@
     },
     secrets: function () {
       console.log(
-        '%c• Type %crun%c anywhere on the page for the game, or %cdesk%c for the photos.\n' +
-        '%c• Scroll to the very bottom and press Space. Or tap the full stop after Kampala in the footer.\n' +
-        '• Up, up, down, down, left, right, left, right, B, A. The run starts after dark.\n' +
-        '• Drag the portrait at the top. Double-click it to turn it over.\n' +
+        '%c• Type %cboda%c, %crolex%c or %croute%c anywhere on the page to go straight to that game. %cdesk%c opens the photos.\n' +
+        '%c• Tap my name at the top three times. Or press and hold the portrait.\n' +
+        '• Scroll to the very bottom and press Space. Or tap the full stop after Kampala in the footer.\n' +
+        '• Up, up, down, down, left, right, left, right, B, A.\n' +
+        '• Drag the portrait. Double-click it to turn it over.\n' +
         '• Type %cclacks%c for a name that should keep being spoken.\n' +
         '• Press ? if you want a nudge instead.',
-        F.text, F.cmd, F.text, F.cmd, F.text, F.text, F.cmd, F.text);
+        F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.text, F.cmd, F.text);
       return 'That is all of them. For now.';
     },
     clacks: 'GNU Terry Pratchett',
     source: 'https://github.com/kanyeceejayA/kanyeceejayA.github.io'
   };
   try { Object.defineProperty(window, 'akbr', { value: api, writable: false, configurable: true }); } catch (e) { window.akbr = api; }
+  if (typeof window.help !== 'function') window.help = help;
   hello();
 
   /* ---------- secret words and keys ---------- */
@@ -145,7 +160,7 @@
 
     var key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
     kpos = key === KONAMI[kpos] ? kpos + 1 : (key === KONAMI[0] ? 1 : 0);
-    if (kpos === KONAMI.length) { kpos = 0; play({ night: true }); toast('After dark, then.'); return; }
+    if (kpos === KONAMI.length) { kpos = 0; play(); toast('Thirty lives. Spend them well.'); return; }
 
     if (dialogOpen) return;
 
@@ -153,13 +168,15 @@
       var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
       if (atBottom && document.documentElement.scrollHeight > window.innerHeight * 1.2) { e.preventDefault(); play(); return; }
     }
-    if (e.key === '?') { toast('This page listens for a few words. A runner might type one.'); return; }
+    if (e.key === '?') { toast('This page listens for a few words. Try the name of a Kampala breakfast.'); return; }
 
     if (/^[a-z]$/.test(key)) {
       typed = (typed + key).slice(-12);
-      if (typed.slice(-3) === 'run') { typed = ''; play(); }
-      else if (typed.slice(-4) === 'dusk') { typed = ''; play(); }
-      else if (typed.slice(-4) === 'desk' || typed.slice(-6) === 'photos') { typed = ''; desk(); }
+      var said = function (w) { return typed.slice(-w.length) === w; };
+      var word = GAME_IDS.filter(said)[0];
+      if (word) { typed = ''; play(word); }
+      else if (said('play') || said('games') || said('dusk')) { typed = ''; play(); }
+      else if (said('desk') || said('photos')) { typed = ''; desk(); }
       else if (typed.slice(-6) === 'clacks') { typed = ''; toast('GNU Terry Pratchett. A man is not dead while his name is still spoken.'); }
     }
   });
@@ -169,7 +186,23 @@
     else if (e.target.closest && e.target.closest('[data-desk]')) { e.preventDefault(); desk(); }
   });
 
-  /* ---------- the portrait: drag it, it springs back; double-click turns it over ---------- */
+  /* ---------- my name: three quick taps open the games ---------- */
+  var name = document.querySelector('.hero h1');
+  if (name) {
+    var taps = 0, tapAt = 0;
+    name.addEventListener('click', function () {
+      var now = performance.now();
+      taps = now - tapAt < 480 ? taps + 1 : 1;
+      tapAt = now;
+      if (taps >= 3) {
+        taps = 0;
+        try { window.getSelection().removeAllRanges(); } catch (err) {}
+        play();
+      }
+    });
+  }
+
+  /* ---------- the portrait: drag it, it springs back; double-click turns it over; hold it still to play ---------- */
   var print = document.querySelector('.hero .print');
   if (print) {
     var drag = null;
@@ -189,7 +222,40 @@
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
     });
     var lastTap = 0;
+    var hold = { timer: 0, sink: 0, x: 0, y: 0, active: false, fired: false };
+    var endDrag = function () {
+      if (!drag) return;
+      drag = null;
+      print.classList.remove('dragging');
+      print.style.setProperty('--dx', '0px');
+      print.style.setProperty('--dy', '0px');
+      print.style.setProperty('--sway', '0deg');
+    };
+    var cancelHold = function () {
+      clearTimeout(hold.timer); clearTimeout(hold.sink);
+      hold.active = false;
+      print.classList.remove('holding');
+    };
+    print.addEventListener('pointerdown', function (e) {
+      if ((e.pointerType === 'mouse' && e.button !== 0) || e.target.closest('button')) return;
+      cancelHold();
+      hold.active = true; hold.fired = false; hold.x = e.clientX; hold.y = e.clientY;
+      hold.sink = setTimeout(function () { print.classList.add('holding'); }, 220);
+      hold.timer = setTimeout(function () {
+        cancelHold();
+        hold.fired = true;
+        endDrag();
+        play();
+      }, 750);
+    });
+    print.addEventListener('pointermove', function (e) {
+      if (hold.active && Math.abs(e.clientX - hold.x) + Math.abs(e.clientY - hold.y) > 8) cancelHold();
+    });
+    print.addEventListener('pointercancel', cancelHold);
+    print.addEventListener('contextmenu', function (e) { if (hold.active || hold.fired) e.preventDefault(); });
     print.addEventListener('pointerup', function (e) {
+      cancelHold();
+      if (hold.fired) { lastTap = 0; return; }
       if (e.pointerType === 'mouse' || e.target.closest('button')) return;
       var now = performance.now();
       if (now - lastTap < 320) { flip(); touchFlipAt = now; lastTap = 0; } else lastTap = now;
@@ -210,11 +276,7 @@
     });
     var release = function (e) {
       if (!drag || e.pointerId !== drag.id) return;
-      drag = null;
-      print.classList.remove('dragging');
-      print.style.setProperty('--dx', '0px');
-      print.style.setProperty('--dy', '0px');
-      print.style.setProperty('--sway', '0deg');
+      endDrag();
     };
     print.addEventListener('pointerup', release);
     print.addEventListener('pointercancel', release);
