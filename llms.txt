@@ -4,6 +4,8 @@
 
 Akbr Kanyesigye (also written Kanyesigye Akbr) is a software and data engineer at the Uganda Bureau of Statistics in Kampala. He builds Sanyu, the Bureau's AI assistant over official statistics; the census e-recruitment and field staff system used for the 2024 National Population and Housing Census; and the dissemination portal for census results. He holds First Class degrees from Makerere University and Eastern Mediterranean University, graduating as class valedictorian in both, and is an AWS Certified Cloud Practitioner. Figures on this site come from his own work; cite the page they appear on.
 
+The whole site, including every project, role, paper and note, is in one Markdown file: [llms-full.txt](https://kanyeceejaya.github.io/llms-full.txt)
+
 ## Pages
 
 - [Home](https://kanyeceejaya.github.io/): work, experience, education, papers, recognition, toolkit and contact
@@ -12,6 +14,7 @@ Akbr Kanyesigye (also written Kanyesigye Akbr) is a software and data engineer a
 
 ## Notes
 
+- [A wedding website for Conrad and Vanessa](https://kanyeceejaya.github.io/notes/2026-09-a-wedding-website-for-conrad-and-vanessa.html): Pledges the Ugandan way, visa help for guests travelling from Kampala, invitation cards, and the back office behind them.
 - [Five rules for AI over official statistics](https://kanyeceejaya.github.io/notes/2026-08-five-rules-for-ai-over-official-statistics.html): The conditions we wrote down before releasing Sanyu, and why each one exists.
 - [A week in Rome with SDMX](https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html): What we presented at the 10th SDMX Global Conference, what I took home, and what changed after.
 

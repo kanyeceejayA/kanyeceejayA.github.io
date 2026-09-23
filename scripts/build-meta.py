@@ -219,7 +219,7 @@ for li in notes_index.select('.note-list li'):
     t = page.select_one('time')
     body = page.select_one('.article .body')
     paras = []
-    for el in body.find_all(['p', 'h2', 'blockquote', 'pre', 'li'], recursive=True):
+    for el in body.find_all(['p', 'h2', 'blockquote', 'pre', 'li', 'figcaption'], recursive=True):
         if el.name == 'h2':
             paras += ['### ' + md(el), '']
         elif el.name == 'blockquote':
@@ -228,6 +228,8 @@ for li in notes_index.select('.note-list li'):
             paras += ['```', el.get_text().strip(), '```', '']
         elif el.name == 'li':
             paras.append('- ' + md(el))
+        elif el.name == 'figcaption':
+            paras += ['*Screenshot: ' + md(el) + '*', '']
         elif el.find_parent('blockquote') is None:
             paras += [md(el), '']
     notes.append({
@@ -293,6 +295,7 @@ feed = ['<?xml version="1.0" encoding="utf-8"?>',
 for n in notes:
     body = re.sub(r'\s+', ' ', n['html'])
     body = body.replace('href="../', 'href="' + SITE).replace('href="./', 'href="' + SITE + 'notes/')
+    body = body.replace('src="../', 'src="' + SITE)
     feed += ['  <entry>',
              '    <title>%s</title>' % escape(n['title']),
              '    <link href="%s" rel="alternate" type="text/html"/>' % n['url'],

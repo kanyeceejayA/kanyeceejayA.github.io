@@ -353,6 +353,36 @@
     });
   });
 
+  /* ---------- screenshots in notes open larger in place ---------- */
+  var shot = null;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('.article .body a.zoom');
+    if (!a || e.ctrlKey || e.metaKey || e.shiftKey || typeof HTMLDialogElement !== 'function') return;
+    e.preventDefault();
+    if (!shot) {
+      shot = document.createElement('dialog');
+      shot.className = 'modal shot-modal';
+      shot.setAttribute('aria-label', 'Screenshot');
+      shot.innerHTML = '<div class="modal-inner"><button class="modal-close" type="button" data-close aria-label="Close">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+        '<figure class="modal-media"><img alt=""><figcaption></figcaption></figure></div>';
+      document.body.appendChild(shot);
+      shot.addEventListener('click', function (ev) { if (ev.target === shot || ev.target.closest('[data-close]')) closeModal(shot, true); });
+      shot.addEventListener('close', function () { if (!document.querySelector('dialog.modal[open]')) body.classList.remove('modal-open'); });
+    }
+    var img = a.querySelector('img'), fig = a.closest('figure'), cap = fig && fig.querySelector('figcaption');
+    shot.querySelector('img').src = a.getAttribute('href');
+    shot.querySelector('img').alt = img ? img.alt : '';
+    shot.querySelector('figcaption').textContent = cap ? cap.textContent : '';
+    var nw = (img && img.naturalWidth) || Number(img && img.getAttribute('width')) || 1200;
+    var nh = (img && img.naturalHeight) || Number(img && img.getAttribute('height')) || 800;
+    var k = Math.min(1, (window.innerWidth - 24) / nw, (window.innerHeight - 120) / nh);
+    shot.style.width = Math.round(nw * k) + 'px';
+    lastOpener = a;
+    shot.showModal();
+    body.classList.add('modal-open');
+  });
+
   function openProject(el, opener) {
     var dlg = document.getElementById('m-project');
     var box = dlg && dlg.querySelector('.pm-content');

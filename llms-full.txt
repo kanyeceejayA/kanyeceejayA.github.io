@@ -15,6 +15,7 @@ Software and data engineer in Kampala. I work along the whole path a figure take
 - **A prediction market for Africa**, in the spirit of Polymarket: markets on the questions people here actually argue about, settled on sources they can check.
 - **Sanyu**, the Bureau's AI assistant over official statistics: more datasets, drafted statistical briefs, and a short code of practice for AI over official figures.
 - **A harmonised data portal** that brings datasets from across government agencies into one place, so service delivery can rest on shared figures.
+- **Open tools for census and survey teams**: csync, which syncs CSPro data with your own code, and a CSPro skill that teaches AI assistants to work on survey apps.
 - **TuuraHub**, a property management product for East African landlords, in beta on the side.
 - **Azure Data Fundamentals**, the next certificate after AWS Cloud Practitioner.
 
@@ -54,26 +55,59 @@ Built with Next.js, MongoDB, Docker, AWS.
 
 Screenshot: The national recruitment dashboard, showing applicant totals and a table of applicants per district (https://kanyeceejaya.github.io/images/census-recruitment.jpg)
 
-#### [UBOS dissemination portal](https://statistics.ubos.org) (2024 to now, data platform)
+#### [UBOS dissemination portal](https://statistics.ubos.org/) (2024 to now, data platform)
 
-The public home of the 2024 Census results, down to parish level.
+One home for Uganda's official statistics, across more than six national datasets.
 
-Dashboards, maps and tabulations for the census, the education and aquaculture censuses, and the national standard indicators. I led a team of three on the platform and built the ingestion and reporting pipelines underneath it, including the PDF table extraction that makes decades of survey reports queryable.
+The 2024 National Population and Housing Census down to parish level, the Baseline Education Census 2025 and the Uganda Aquaculture Census 2025 are live, with harmonised community and GBV data, the national standard indicators, the Malaria Indicator Survey 2024-25 and a census-based multidimensional poverty index on the way. Each comes as dashboards, maps and tabulations.
 
+I led a team of three on the platform and built the ingestion and reporting pipelines underneath it, including the PDF table extraction that makes decades of survey reports queryable.
+
+- 6+: national datasets in one place
 - 500,000+: public users
 - 3: people on the team I led
 
 Built with Python and SQL pipelines, Power BI, QGIS.
 
-Links: [statistics.ubos.org](https://statistics.ubos.org)
+Links: [Visit statistics.ubos.org](https://statistics.ubos.org/)
 
-Screenshot: The Census 2024 dashboard on the UBOS portal: total population and household counts above cards for the data explorer, map explorer and visualisation builder (https://kanyeceejaya.github.io/images/shot-portal-nphc.jpg)
+Screenshot: The UBOS dissemination portal: the Census 2024, Baseline Education Census and Aquaculture Census cards, with four more datasets marked coming soon (https://kanyeceejaya.github.io/images/shot-portal.jpg)
 
 #### Also at the Bureau (2023 to now, data work)
 
 Classification, collection tools, GIS tooling, cloud and security.
 
 Automated classification for coding census and survey responses, which removed months of manual work. The data collection instruments used for national enumeration. Python and QGIS tooling that sped up map preparation for the GIS team. The Bureau's AWS and GCP estate, including a shared outbound proxy that consolidated external service access and traffic filtering. Phishing exercises with the security team.
+
+### Tools for census and survey teams
+
+#### [csync, a CSPro synchronisation suite](https://github.com/kanyeceejayA/csync) (2026, open source)
+
+Sync any CSPro survey between a CSWeb server and your own code.
+
+Most census and survey fieldwork in the region runs on CSPro: tablets collect cases and sync them through a CSWeb server. Getting those cases in and out from your own code is the hard part. csync reads a survey's dictionary and does the rest. Pull cases into a plain SQLite store, add, edit or remove them as ordinary Python dictionaries, and push them back so they reach the tablets, with the vector clocks CSEntry expects.
+
+It works for any dictionary, from assignments and staff lists to a full household questionnaire, and speaks both CSWeb 8.0 and 8.1. It comes as a Python library, a command line, a one-page web front end, and readers and writers for CSPro's own data files.
+
+- Any: CSPro dictionary, with no field names hard-coded
+- 8.0 and 8.1: CSWeb versions it speaks
+- 0: third-party packages the core library needs
+
+Built with Python's standard library, SQLite and the CSWeb REST API, with an optional Flask page.
+
+Links: [csync on GitHub](https://github.com/kanyeceejayA/csync)
+
+#### [CSPro toolkit, a skill for AI assistants](https://github.com/kanyeceejayA/csync/tree/main/skills/cspro-toolkit) (2026, AI)
+
+Teaches Claude and other AI assistants to read, edit and check CSPro survey apps.
+
+A CSPro application is a set of files that must stay in step: the dictionary, the logic, the forms and the run files. CSPro can't compile an entry app from the command line, so an AI assistant editing one is working blind. This skill gives it the map.
+
+It explains what each file is for and how a change in the dictionary ripples into the logic and run files. It adds a linter that pre-checks logic edits before anyone opens CSPro, walks through building and releasing a deployment package, and shows how to ask a CSWeb server for its dictionaries, case counts, sync history and cases. It is packaged as an Agent Skill, the SKILL.md format that Claude and other assistants can load.
+
+Built with Markdown instructions, Python helper scripts, and a reference for the CSWeb API.
+
+Links: [The skill on GitHub](https://github.com/kanyeceejayA/csync/tree/main/skills/cspro-toolkit)
 
 ### Civic platforms
 
@@ -234,7 +268,8 @@ Before university: learned to sell, count stock, run a floor team, and keep book
 
 ### Programmes and courses
 
-- **Political Education, Transformative and Leadership Development Course**, National Leadership Institute, Kyankwanzi (Jun to Jul 2026). Completed 30 July 2026. A residential course for UBOS Intake 04 of 2026, including military training.
+- **Huduma Fellowship, class of 2026**, LéO Africa Institute and Konrad-Adenauer-Stiftung (From 2026). Leadership, public affairs and policy making for people in Uganda's public and civic service.
+- **Political Education, Transformative and Leadership Development Course**, National Leadership Institute, Kyankwanzi (Jun to Jul 2026). Completed 30 July 2026. A residential course in patriotism, political education and military training, time on the shooting range included.
 - **AI mentee**, Makerere Artificial Intelligence Research Lab (Jan to Jul 2019). Cassava disease identification and a land value prediction model for Ntinda, in Python. Attended Indaba X Uganda 2019 on deep learning.
 - **CS50's Web Programming with Python and JavaScript**, Harvard University, through edX (May to Dec 2020)
 - **Cisco Certified Network Associate course**, Makerere University (Jul 2016)
@@ -250,7 +285,7 @@ Before university: learned to sell, count stock, run a floor team, and keep book
 ### Presented and accepted
 
 - **Centralised validation and AI report generation: accelerating statistical dissemination at an NSO** (2026, poster, accepted). Akbr Kanyesigye, Ivan Atwiine, Francis Kayondo, Lawrence Mugula. DSSV 2026, the conference on Data Science, Statistics and Visualisation, Trento, 29 June to 1 July 2026.
-- **The impact of digital media and artificial intelligence on governance, national security, public opinion and socio-economic development in Uganda** (2026, presentation). Syndicate 2, UBOS Intake 04 of 2026. Political Education, Transformative and Leadership Development Course, National Leadership Institute, Kyankwanzi, July 2026. Both sides of the question, from online services and census tablets to deepfakes, cybercrime and the 2024 breach at the Bank of Uganda.
+- **The impact of digital media and artificial intelligence on governance, national security, public opinion and socio-economic development in Uganda** (2026, presentation). Syndicate 2, National Leadership Institute, Kyankwanzi. Political Education, Transformative and Leadership Development Course, National Leadership Institute, Kyankwanzi, July 2026. Both sides of the question, from online services and census tablets to deepfakes, cybercrime and the 2024 breach at the Bank of Uganda.
 - **From fragmentation to intelligence: automating national statistics with AI and machine learning** (2025, presented). Akbr Kanyesigye, Doreen Kirungi Maina, Ivan Atwiine, Allan Agaba. 10th SDMX Global Conference, Rome, 29 September to 3 October 2025, hosted by the Bank of Italy. [What I took home](https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html).
 - **Bringing FIDO2 to Flutter: development of a password-less authentication package for a cross-platform development framework** (2022, paper). Akbr Kanyesigye, supervised by Prof. Dr. Ahmet Rizaner. Eastern Mediterranean University, June 2022. The package is open source as [flutter_fido2](https://github.com/kanyeceejayA/flutter_fido2). Also given as a talk later that year, "Forget passwords: introducing password-less authentication using FIDO2".
 
@@ -262,9 +297,10 @@ Before university: learned to sell, count stock, run a floor team, and keep book
 
 ## Recognition
 
+- 2026: Huduma Fellow, class of 2026 (LéO Africa Institute and Konrad-Adenauer-Stiftung)
 - 2026: Completed the leadership course at Kyankwanzi (National Leadership Institute, 30 July 2026)
 - 2025: UBOS Innovation Award (Uganda Bureau of Statistics)
-- 2025: [AWS Certified Cloud Practitioner](https://kanyeceejaya.github.io/#ed-aws) (Amazon Web Services, valid to 2028)
+- 2025: AWS Certified Cloud Practitioner (Amazon Web Services, valid to 2028)
 - 2024: Employee of the year (Best-performing staff member on the Census appraisal, UBOS)
 - 2022: [Class valedictorian, 4.0 of 4.0](https://kanyeceejaya.github.io/#ed-emu) (MSc Information Technology, Eastern Mediterranean University)
 - 2019: Appointed to the 4th Industrial Revolution Taskforce (Presidential appointment, Ministry of ICT and National Guidance)
@@ -291,11 +327,13 @@ Photo caption: President Museveni talks to Akbr Kanyesigye at the launch, as ICT
 
 Political Education, Transformative and Leadership Development Course. National Leadership Institute, Kyankwanzi. Completed 30 July 2026.
 
-A residential course for staff of the Bureau, UBOS Intake 04 of 2026: political economy, Uganda's history and its place in the world, leadership, Kiswahili, and military training.
+A residential course about loving and serving your country. The lectures ran through Uganda's history from before colonial rule, political economy, how the country's position shapes its national goals, and what patriotism asks of a public servant. We sang in Kiswahili, marched in formation, and learned to think of the nation first.
+
+The other half was military. Early mornings of drill and physical training, and time on the range learning to handle and shoot a rifle.
 
 My syndicate's closing paper examined the impact of digital media and artificial intelligence on governance, national security, public opinion and socio-economic development in Uganda. It weighed online services and census tablets against deepfakes, cybercrime and the 2024 breach at the Bank of Uganda.
 
-Along the way I built the intake a small offline revision site, with flashcards, mock exams, a Kiswahili songbook and a shared leaderboard.
+Along the way I built my classmates a small offline revision site, with flashcards, mock exams, a Kiswahili songbook and a shared leaderboard.
 
 Links: [See the paper](https://kanyeceejaya.github.io/#pp-nali), [See it under education](https://kanyeceejaya.github.io/#ed-nali)
 
@@ -311,16 +349,38 @@ Links: [About Sanyu](https://kanyeceejaya.github.io/#p-sanyu), [About the portal
 
 Uganda Bureau of Statistics, 2024
 
-Ranked the best-performing staff member on the Bureau's appraisal for the 2024 National Population and Housing Census.
+Ranked the best-performing staff member on the Bureau's appraisal for the 2024 National Population and Housing Census. That year I worked on the census from the first application to the last table.
 
-That year I was the primary developer of the census e-recruitment and field staff system, which managed more than 200,000 census personnel, and part of the team that cut the time it took to start enumeration.
+- **Recruitment.** I was the primary developer of the e-recruitment and field staff system, which managed more than 200,000 census personnel.
+- **Maps.** I wrote Python and QGIS scripts that sped up map preparation for the GIS team.
+- **Enumeration.** I worked on the data collection tool the enumerators used on their tablets, restructured it so it ran faster, and helped cut the time it took to start enumeration.
+- **Processing.** I automated steps of data processing in Python and helped bring AI into the coding of responses, which saved months of manual work.
+Links: [About the census system](https://kanyeceejaya.github.io/#p-census), [The full role](https://kanyeceejaya.github.io/#xp-ubos)
 
-Links: [About the census system](https://kanyeceejaya.github.io/#p-census)
+### AWS Certified Cloud Practitioner
+
+Amazon Web Services. Issued September 2025, valid until September 2028.
+
+AWS describes it this way: earners have a fundamental understanding of IT services and their uses in the AWS Cloud, have demonstrated cloud fluency and foundational AWS knowledge, and can identify the essential AWS services needed to set up AWS-focused projects.
+
+It sits behind the day job: I architect and run the Bureau's AWS and GCP estate, from Docker deployments to the shared outbound proxy.
+
+Links: [Verify it on Credly](https://www.credly.com/badges/e7259f2c-476b-438c-b92f-f4642edbecc7)
+
+### Huduma Fellow, class of 2026
+
+LéO Africa Institute and Konrad-Adenauer-Stiftung
+
+Huduma is Swahili for service. The fellowship is a leadership programme for people who serve in Uganda's public and civic sectors, and each class takes in 15 fellows.
+
+Fellows meet for seminars and workshops on leadership, public affairs and policy making, and go back to their workplaces in between, with mentorship, study tours and a project along the way. I joined the 2026 class from the Uganda Bureau of Statistics.
+
+Links: [About the Huduma Fellowship](https://leoafricainstitute.org/programs/huduma-fellowship)
 
 ## Toolkit
 
 - **Data and BI**: SQL (T-SQL and PL/SQL), dimensional modelling, ETL pipelines, Power BI, pandas and NumPy, QGIS and spatial data, SDMX.
-- **AI**: LLM tool calling, grounded question answering over statistical databases, RAG, MCP, automated report generation, model integration.
+- **AI**: LLM tool calling, grounded question answering over statistical databases, RAG, MCP, automated report generation, model integration, Agent Skills.
 - **Cloud and operations**: AWS, GCP, Docker, CI/CD, Linux and RHEL, Nginx, Apache, pm2, Windows and Linux deployments.
 - **Web and mobile**: React, Next.js, Node.js, Django, Flutter, React Native, WordPress, Drupal, CodeIgniter, Oracle APEX, Figma.
 - **Databases**: Oracle, SQL Server, MySQL, Postgres, SQLite, MongoDB.
@@ -344,6 +404,68 @@ Links: [About the census system](https://kanyeceejaya.github.io/#p-census)
 - CV (PDF): https://kanyeceejaya.github.io/docs/Kanyesigye-Akbr-CV-2026.pdf
 
 ## Notes
+
+### A wedding website for Conrad and Vanessa
+
+23 September 2026. https://kanyeceejaya.github.io/notes/2026-09-a-wedding-website-for-conrad-and-vanessa.html
+
+Conrad and Vanessa married on Friday 11 September 2026 at St George's Cathedral in Cape Town, with the reception that afternoon at Belair Pavilion in Paarl. Most of the people who love them live in Kampala, more than four thousand kilometres and one visa away. That distance shaped almost everything I built for them.
+
+The site lives at [conradxvanessa.com](https://conradxvanessa.com). It started as a pledge form and grew, one section at a time, into the place where guests pledged, said whether they were coming, asked for help with a visa, chose a hotel and received their invitation card. Behind it sits a small back office that the wedding committee used every day.
+
+*Screenshot: The home page, in the couple's navy and rose gold, counting down to the day.*
+
+### Pledges, the way Ugandan weddings are paid for
+
+In Uganda a wedding is carried by a crowd. Friends and family meet, pledge what they can, and pay it off over the months before the day. Conrad and Vanessa launched theirs at a wedding meeting in Kampala on 15 May 2026, and most guests first reached the site by scanning a QR code handed out that evening.
+
+The pledge form asks for a name, a phone number, an amount in shillings and a reminder date, with quick buttons for fifteen days, the end of the month or thirty days. A thank-you goes out on WhatsApp straight away. It falls back to SMS for Ugandan numbers that WhatsApp can't reach, and goes by email too when the guest gives one. On the reminder date, an SMS goes out on its own. The page also lists the Mobile Money codes to pay with and three committee members to call.
+
+*Screenshot: The pledge form, and the card every guest gets once they pledge.*
+
+Every pledge comes with its own card, made from the guest's name and amount, in three photo designs and a tall one sized for a WhatsApp or Instagram story. A pledge card on someone's status is a public thank-you, and a quiet invitation to the next person.
+
+### Getting Kampala to Cape Town
+
+A wedding abroad means a visa for most Ugandan guests. The RSVP form asks the usual things: how many are coming, yes or love from afar, a note for the couple and a preferred hotel. One switch opens the rest: passport, work, who is paying for the trip, travel dates and any earlier South African visas, plus a choice of three group trips to the visa centre in June and July. Guests could change their answers through a personal link until 4 September.
+
+Each guest still applied for their own visa. What the site does is gather what the couple's team needs to write every invitation letter, and give the committee a table it can filter and export for the visa office. A visa help page walks through the process, the cost and the dates, with the forms to download and a checklist.
+
+*Screenshot: Guests who asked for visa help, as the committee saw them. It exports to a spreadsheet for the visa office.*
+
+For the trip itself there are pages on the venue, flights, and six Cape Town hotels picked for the guests, filtered by budget with prices in both rand and shillings. Another page lists things to do across the five days of celebrations, from 9 to 13 September.
+
+### Invitations, one guest at a time
+
+The invitation cards come in four designs, from light and floral to deep burgundy. Each carries the guest's name in script, the order of the day, and a QR code back to the RSVP page. The committee issues them from the back office, one guest at a time or straight from a pledge, and downloads them as images or PDFs sized for a 5 by 7 inch print or A4, or as one ZIP file for a whole batch.
+
+*Screenshot: Two of the four designs, printed for made-up guests.*
+
+*Screenshot: The card maker. Pick a design, type a name, download.*
+
+### The committee's side
+
+Most of the work happened in the back office. The pledges page shows what was pledged, what was collected and what is still owed. From there the committee can search, filter, record part payments, and send reminders in bulk by SMS, WhatsApp or email. Every message the site sends lands in one log, so nobody has to wonder whether a guest heard from us.
+
+My favourite part is the smallest. The committee already kept its pledge list in a WhatsApp group, with an emoji beside each name for paid or pending. Rather than ask anyone to retype it, the back office takes the pasted list, reads the emoji, converts pledges made in dollars, and brings them all in.
+
+*Screenshot: Pledges in the back office, with made-up guests: the totals first, then every pledge with its payment state and reminder date.*
+
+Access is by role. Admins run everything, editors keep the records up to date, and viewers can look without changing anything.
+
+### Built for the phone in your hand
+
+Nearly every guest arrived from a phone, usually from a QR code or a link in a WhatsApp group, so every page was designed at phone width first.
+
+*Screenshot: The home page and the RSVP form on a phone.*
+
+Under the hood it is plain: HTML, CSS and a little JavaScript, with no framework. It began on Cloudflare Pages, with Pages Functions for the API, a D1 database, and Workers KV for admin sign-ins. Later it moved to a small server of its own, where a thin Node wrapper runs the same functions unchanged against SQLite, behind nginx. WhatsApp messages go out through a command-line tool on that server, SMS through EgoSMS, and email through Resend.
+
+The site grew in the open. Sections went live as the wedding needed them, nine of twelve in the end, while the couple's story, the guide for the day and the guestbook stayed behind the scenes.
+
+Congratulations, Conrad and Vanessa. May the marriage outlast the website by a very long time.
+
+Every screenshot here uses made-up guests, phone numbers and passports. No real guest's details appear in this post.
 
 ### Five rules for AI over official statistics
 
