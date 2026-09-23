@@ -1,1 +1,7 @@
 node_modules/
+.DS_Store
+__pycache__/
+
+# personal working files, not for publishing
+linkedinProfile-sep2026.pdf
+some-linkedin-projects.md
