@@ -1,0 +1,402 @@
+# Akbr Kanyesigye
+
+> Akbr Kanyesigye, software and data engineer in Kampala. Census systems, data pipelines, dashboards, and AI that answers from Uganda's official statistics.
+
+This is the full plain-text version of https://kanyeceejaya.github.io/, generated from the site on 2026-09-23. A shorter index lives at https://kanyeceejaya.github.io/llms.txt.
+
+## About
+
+I build the systems that move public data from collection to use.
+
+Software and data engineer in Kampala. I work along the whole path a figure takes: the tools that collect it, the pipelines that process it, the dashboards that show it, and the AI that answers from it.
+
+## Now
+
+- **A prediction market for Africa**, in the spirit of Polymarket: markets on the questions people here actually argue about, settled on sources they can check.
+- **Sanyu**, the Bureau's AI assistant over official statistics: more datasets, drafted statistical briefs, and a short code of practice for AI over official figures.
+- **A harmonised data portal** that brings datasets from across government agencies into one place, so service delivery can rest on shared figures.
+- **TuuraHub**, a property management product for East African landlords, in beta on the side.
+- **Azure Data Fundamentals**, the next certificate after AWS Cloud Practitioner.
+
+## Work
+
+Grouped by who the work serves.
+
+### Official statistics, at the Uganda Bureau of Statistics
+
+#### [Sanyu](https://statistics.ubos.org/sanyu) (2024 to now, AI)
+
+Uganda's AI assistant for official statistics.
+
+Ask a question in plain language, in English or one of five Ugandan languages, and get the figure with its source, a live table or chart, or a drafted statistical brief. The language model decides what to retrieve; the statistical database decides what the value is. No figure reaches the reader unless a structured query returned it, and every figure carries its table, survey, period and geography.
+
+- 5,100+: indicators from six official sources
+- 1,600+: tables lifted from published reports, citeable by page
+- 40 ms: cold start, down from 30 to 60 seconds
+- 45: golden-fact regression tests on every build
+
+Built with Node.js, SQLite, LLM tool calling, RAG, MCP endpoints, Python pipelines, Nginx and pm2. Built in-house at UBOS with Sunbird AI on the language side.
+
+Links: [statistics.ubos.org/sanyu](https://statistics.ubos.org/sanyu)
+
+Screenshot: Sanyu's chat screen: a sidebar of data sources such as Census 2024 and CPI, and the prompt 'Ask Sanyu about Uganda's official statistics' (https://kanyeceejaya.github.io/images/shot-sanyu.jpg)
+
+#### Census e-recruitment and field staff management (2023 to 2024, web platform)
+
+The system behind the people who counted Uganda in 2024.
+
+Applications, vetting, shortlists, interviews, assignment and payroll records for the National Population and Housing Census, decentralised to every district, with national dashboards for the Bureau. I was the primary developer and ran its deployment.
+
+- 200,000+: census personnel managed nationwide
+- 80%: faster issue resolution from the testing and monitoring tooling around it
+
+Built with Next.js, MongoDB, Docker, AWS.
+
+Screenshot: The national recruitment dashboard, showing applicant totals and a table of applicants per district (https://kanyeceejaya.github.io/images/census-recruitment.jpg)
+
+#### [UBOS dissemination portal](https://statistics.ubos.org) (2024 to now, data platform)
+
+The public home of the 2024 Census results, down to parish level.
+
+Dashboards, maps and tabulations for the census, the education and aquaculture censuses, and the national standard indicators. I led a team of three on the platform and built the ingestion and reporting pipelines underneath it, including the PDF table extraction that makes decades of survey reports queryable.
+
+- 500,000+: public users
+- 3: people on the team I led
+
+Built with Python and SQL pipelines, Power BI, QGIS.
+
+Links: [statistics.ubos.org](https://statistics.ubos.org)
+
+Screenshot: The Census 2024 dashboard on the UBOS portal: total population and household counts above cards for the data explorer, map explorer and visualisation builder (https://kanyeceejaya.github.io/images/shot-portal-nphc.jpg)
+
+#### Also at the Bureau (2023 to now, data work)
+
+Classification, collection tools, GIS tooling, cloud and security.
+
+Automated classification for coding census and survey responses, which removed months of manual work. The data collection instruments used for national enumeration. Python and QGIS tooling that sped up map preparation for the GIS team. The Bureau's AWS and GCP estate, including a shared outbound proxy that consolidated external service access and traffic filtering. Phishing exercises with the security team.
+
+### Civic platforms
+
+#### [National Youth Council accountability platform](https://www.nyc.go.ug/funding) (2024, web platform)
+
+Where Uganda's youth council shows its money.
+
+A public accountability platform for the National Youth Council of Uganda: every project with its location, timeline, budget, funding sources and expenditure updates, downloadable reports, and a way for young people to leave feedback on what was done. Built in 2024 with the support of Konrad-Adenauer-Stiftung.
+
+Links: [nyc.go.ug/funding](https://www.nyc.go.ug/funding)
+
+#### Uchaguzi (2021, mobile app, chatbot and site)
+
+Voter information for Uganda's 2021 general elections.
+
+A website, a WhatsApp chatbot and Android and iOS apps that explained how to register, where to vote and what the rules were, for the Ministry of ICT's Government Citizen Interaction Centre with Konrad-Adenauer-Stiftung. I led the team.
+
+- 10,000+: people served during the election
+
+Built with Flutter, Drupal, PHP, Python.
+
+Links: [Read about it on PC Tech](https://pctechmag.com/2021/01/uchaguzi-a-voter-information-platform/)
+
+Screenshot: Uchaguzi app screens on phones (https://kanyeceejaya.github.io/images/uchaguzi.jpg)
+
+#### Youth Action Handbook (2022, mobile app)
+
+A bilingual learning app for young peacebuilders in the Great Lakes.
+
+Courses, quizzes, certificates and a forum for the Great Lakes Youth Network for Dialogue and Peace, an EU and Konrad-Adenauer-Stiftung project, on Android, iOS and web in DR Congo, Rwanda and Uganda. I led development from the first screen to the store listings.
+
+Built with Flutter, with offline caching for patchy networks.
+
+Links: [Android](https://play.google.com/store/apps/details?id=ug.rtl.youth_action_handbook), [iOS](https://apps.apple.com/ug/app/youth-action-handbook/id1614617118)
+
+Screenshot: Four Youth Action Handbook app screens: home, sign in, a course, and a quiz (https://kanyeceejaya.github.io/images/youth-action-handbook.jpg)
+
+#### [Makerere at 100](https://100.mak.ac.ug/) (2022, web platform)
+
+The central platform for Makerere University's centennial.
+
+Donations, merchandise and communications for the celebrations, serving more than 12,000 people. I was the technical lead.
+
+Built with PHP and a custom WordPress theme.
+
+Links: [100.mak.ac.ug](https://100.mak.ac.ug/)
+
+#### BudgetMate (2023, mobile app)
+
+Budget collection for Yemen's Ministry of Finance, with or without internet.
+
+Spending units create budget requests with guided inputs or CSV files in a cross-platform app; where there's no connectivity, the backend exchanges data over an SMS gateway.
+
+Built with Expo and React Native, MongoDB, Twilio.
+
+### Products and open source
+
+#### [TuuraHub](https://tuurahub.com) (2026, product in beta)
+
+Property management built for East Africa.
+
+A self-serve platform for landlords and property managers: properties, units, tenants, leases, invoices, receipts, rent reminders by SMS, WhatsApp and email, maintenance tickets, a tenant portal and listings. Built for the large middle between spreadsheets and enterprise suites, with Uganda as the first market. A side product, in beta.
+
+Built with Next.js, Prisma and Postgres, Stripe, AWS S3.
+
+Links: [tuurahub.com](https://tuurahub.com)
+
+Screenshot: The TuuraHub landing page: 'Manage every rental, without the chase' above buttons to create a hub and cards for landlords, renters and tenants (https://kanyeceejaya.github.io/images/shot-tuurahub.jpg)
+
+#### [flutter_fido2](https://github.com/kanyeceejayA/flutter_fido2) (2022, open source)
+
+Sign in without passwords, in Flutter.
+
+An open-source plugin for FIDO2 and WebAuthn: register authenticators, sign challenges and talk to your server, on Android, iOS, Windows and web. Built during my master's, with a companion server.
+
+Links: [On GitHub](https://github.com/kanyeceejayA/flutter_fido2)
+
+#### Earlier (2017 to 2020, assorted)
+
+Retail, HR, school transport and event software.
+
+A foot-traffic counter on iPads for SportChek stores in Canada during the pandemic. A leave management system on Oracle APEX at Airtel that cut approvals from days to under an hour. A school shuttle tracking platform for my final year at Makerere. The Africa Now Summit app and ticketing for close to a thousand delegates.
+
+## Experience
+
+### Official statistics (2022 to now)
+
+#### Software engineer, Uganda Bureau of Statistics, Kampala (Dec 2022 to now)
+
+IT Officer working as a software and data engineer across the Bureau's data estate: the instruments that collect, the pipelines that process, the portals that publish, the AI that answers, and the cloud they run on.
+
+- Built and operate Sanyu, the Bureau's production AI statistics service, and re-architected it from vector search to structured tool calling on Node.js and SQLite.
+- Built the ingestion and automated reporting pipeline for national statistical data in Python and SQL, plus a PDF table extraction process that made 2,200+ published tables queryable and citeable.
+- Led a team of three to deliver the dissemination platform: dashboards, maps and tabulations for more than 500,000 public users.
+- Led the Bureau's adoption of AI for data processing, applying automated classification to the coding of census and survey responses.
+- Built and operate the census e-recruitment and field staff system on Next.js and MongoDB, serving 200,000+ personnel.
+- Designed the data collection instruments used for national enumeration and wrote Python and QGIS tooling that accelerated map preparation.
+- Wrote the automated testing and monitoring behind these systems; support UAT and change documentation.
+- Architected and manage the Bureau's AWS and GCP estate: Docker deployments, CI chains, and a shared outbound proxy.
+- Ranked best-performing staff member on the 2024 Census appraisal; UBOS Innovation Award, 2025.
+
+#### Founder and director, Rootless Technologies, Kampala (2016 to now, part-time)
+
+A small studio building software for businesses and organisations in the region. Several of the civic platforms above were delivered through it, alongside websites, a hotel management system and the odd wedding portal.
+
+### Civic tech and government (2018 to 2022)
+
+#### Technical lead, Makerere at 100, Makerere University (Feb to Nov 2022)
+
+Built and ran the central platform for the university's centennial: donations, merchandise and communications for more than 12,000 people.
+
+#### Lead app developer, Youth Action Handbook, European Union and Konrad-Adenauer-Stiftung (Oct 2021 to Mar 2022)
+
+Led the bilingual Flutter app for the Great Lakes Youth Network for Dialogue and Peace, shipped on Android, iOS and web in DR Congo, Rwanda and Uganda.
+
+- Owned every feature from inception to release: courses, quizzes, certificates, a user forum, and caching for weak networks.
+- Handled the store listings and the rollout across three countries.
+
+#### Lead developer, Uchaguzi voter platform, Konrad-Adenauer-Stiftung and the Ministry of ICT and National Guidance (Nov 2020 to Mar 2021)
+
+Led delivery of the website, WhatsApp chatbot and mobile apps that served more than 10,000 people during the 2021 general elections.
+
+#### Member, 4th Industrial Revolution Taskforce, Ministry of ICT and National Guidance (Apr 2019 to Jan 2021)
+
+Appointed by the President to the taskforce that studied 4IR technologies and advised government on policy, adoption and the skills, infrastructure and ecosystem needed for them.
+
+#### IT specialist, Government Citizen Interaction Centre, Ministry of ICT and National Guidance (Dec 2018 to Jan 2021)
+
+Built and maintained the government's focal news platform on Drupal and PHP, and looked after the centre's servers, software and websites.
+
+- Trained district technical officers across the country on IT and digital communications, raising the number of districts with active websites by 30%.
+- Ran the centre's server and web estate.
+
+#### Web and app developer, in charge of ticketing, Africa Strategic Leadership Centre (Nov 2018 to May 2019)
+
+Built the Africa Now website and conference app, and set up and ran the online ticketing that handled close to a thousand delegates for the Africa Now Summit 2019.
+
+### Beginnings (2015 to 2018)
+
+#### Travel sales intern, Great Lakes Safaris, Kampala (Aug to Nov 2018)
+
+A short stint selling safaris, right after graduating. Useful for learning how customers actually decide.
+
+#### IT operations, Airtel Uganda (Jun 2017 to Apr 2018)
+
+Led the intern team that built a leave management system on Oracle Application Express, cutting approvals from several days to under an hour. Also supported USSD services in Java EE, set up a RHEL server, and edited the 2017 Airtern magazine.
+
+#### Sales floor, then sales supervisor, City Tyres, Nakawa (Jan to Jul 2015)
+
+Before university: learned to sell, count stock, run a floor team, and keep books in QuickBooks. Still the most useful management training I've had.
+
+## Education
+
+### Degrees
+
+- **MSc Information Technology**, Eastern Mediterranean University, Famagusta, Cyprus (Feb 2021 to Jul 2022). First Class, 4.0 of 4.0 CGPA, class valedictorian. Built a Flutter plugin for password-less FIDO2 authentication as the main project. Coursework went deep on project management.
+- **BSc Information Systems**, Makerere University, Kampala (Sep 2015 to Jan 2019). First Class, class valedictorian. Final-year project: a school shuttle tracking platform with web and Android apps. Active in the Rotaract Club of Makerere.
+
+### Programmes and courses
+
+- **Political Education, Transformative and Leadership Development Course**, National Leadership Institute, Kyankwanzi (Jun to Jul 2026). Completed 30 July 2026. A residential course for UBOS Intake 04 of 2026, including military training.
+- **AI mentee**, Makerere Artificial Intelligence Research Lab (Jan to Jul 2019). Cassava disease identification and a land value prediction model for Ntinda, in Python. Attended Indaba X Uganda 2019 on deep learning.
+- **CS50's Web Programming with Python and JavaScript**, Harvard University, through edX (May to Dec 2020)
+- **Cisco Certified Network Associate course**, Makerere University (Jul 2016)
+
+### Certifications
+
+- **AWS Certified Cloud Practitioner**, Amazon Web Services (Sep 2025). Valid to Sep 2028
+- **Blockchain Innovation Program**, BSV Blockchain (Feb 2023)
+- **Azure Data Fundamentals, DP-900**, Microsoft (In progress)
+
+## Papers and talks
+
+### Presented and accepted
+
+- **Centralised validation and AI report generation: accelerating statistical dissemination at an NSO** (2026, poster, accepted). Akbr Kanyesigye, Ivan Atwiine, Francis Kayondo, Lawrence Mugula. DSSV 2026, the conference on Data Science, Statistics and Visualisation, Trento, 29 June to 1 July 2026.
+- **The impact of digital media and artificial intelligence on governance, national security, public opinion and socio-economic development in Uganda** (2026, presentation). Syndicate 2, UBOS Intake 04 of 2026. Political Education, Transformative and Leadership Development Course, National Leadership Institute, Kyankwanzi, July 2026. Both sides of the question, from online services and census tablets to deepfakes, cybercrime and the 2024 breach at the Bank of Uganda.
+- **From fragmentation to intelligence: automating national statistics with AI and machine learning** (2025, presented). Akbr Kanyesigye, Doreen Kirungi Maina, Ivan Atwiine, Allan Agaba. 10th SDMX Global Conference, Rome, 29 September to 3 October 2025, hosted by the Bank of Italy. [What I took home](https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html).
+- **Bringing FIDO2 to Flutter: development of a password-less authentication package for a cross-platform development framework** (2022, paper). Akbr Kanyesigye, supervised by Prof. Dr. Ahmet Rizaner. Eastern Mediterranean University, June 2022. The package is open source as [flutter_fido2](https://github.com/kanyeceejayA/flutter_fido2). Also given as a talk later that year, "Forget passwords: introducing password-less authentication using FIDO2".
+
+### Submitted in 2026
+
+- **Grounding generative AI on census data for accurate government statistical dissemination** (2026). Akbr Kanyesigye, Ivan Atwiine, Doreen Kirungi Maina, Allan Agaba. dg.o 2026, the 27th International Conference on Digital Government Research, Omaha. A related abstract, "Evaluating statistical accuracy of retrieval-augmented language models for census data dissemination: evidence from Uganda", went to AIC 2026, the 9th African International Conference on Statistics, Nairobi.
+- **Centralised validated data as infrastructure for AI-driven policy brief generation in government** (2026). Akbr Kanyesigye, Ivan Atwiine, Francis Kayondo, Lawrence Mugula. dg.o 2026, Omaha. A related abstract, "A staged automated validation framework for improving statistical data quality at national statistical offices: Uganda's experience", went to AIC 2026, Nairobi.
+- **Launching Sanyu: Uganda's AI assistant for official statistics, and the accountability contract behind it** (2026). Uganda Bureau of Statistics, with Akbr Kanyesigye as technical contact. Proposed launch event and live demonstration for the 10th Statistical Commission for Africa, October 2026, together with a side event on SDMX as the join key across national datasets. [The five rules behind it](https://kanyeceejaya.github.io/notes/2026-08-five-rules-for-ai-over-official-statistics.html).
+
+## Recognition
+
+- 2026: Completed the leadership course at Kyankwanzi (National Leadership Institute, 30 July 2026)
+- 2025: UBOS Innovation Award (Uganda Bureau of Statistics)
+- 2025: [AWS Certified Cloud Practitioner](https://kanyeceejaya.github.io/#ed-aws) (Amazon Web Services, valid to 2028)
+- 2024: Employee of the year (Best-performing staff member on the Census appraisal, UBOS)
+- 2022: [Class valedictorian, 4.0 of 4.0](https://kanyeceejaya.github.io/#ed-emu) (MSc Information Technology, Eastern Mediterranean University)
+- 2019: Appointed to the 4th Industrial Revolution Taskforce (Presidential appointment, Ministry of ICT and National Guidance)
+- 2019: [Class valedictorian, First Class honours](https://kanyeceejaya.github.io/#ed-mak) (BSc Information Systems, Makerere University)
+- 2017: [Editor, Airtern magazine](https://kanyeceejaya.github.io/#xp-airtel) (Airtel Uganda's intern publication)
+
+## Stories behind some of these
+
+### The 4th Industrial Revolution Taskforce
+
+April 2019 to January 2021
+
+In April 2019 President Museveni set up a 21-member expert taskforce, chaired by former ICT minister John Nasasira, to study the technologies of the fourth industrial revolution and advise government on how Uganda should adopt them.
+
+I joined from the Ministry of ICT's Government Citizen Interaction Centre, a few months after finishing university, and met the President with the rest of the team when he launched it.
+
+Over the next eighteen months we studied how other countries were preparing and wrote the report that became Uganda's national 4IR strategy: skills, infrastructure, research, cyber security and data protection, aimed at making Uganda a 4IR hub by 2040. The draft went public in October 2020, and the final report was handed to the Prime Minister in December 2022.
+
+Links: [Read the appointment on the Ministry of ICT site](https://dmu.ict.go.ug/he-museveni-appoints-4th-industrial-revolution-taskforce)
+
+Photo caption: President Museveni talks to Akbr Kanyesigye at the launch, as ICT Minister Frank Tumwebaze looks on. April 2019. Photo: Ministry of ICT and National Guidance.
+
+### Kyankwanzi, 2026
+
+Political Education, Transformative and Leadership Development Course. National Leadership Institute, Kyankwanzi. Completed 30 July 2026.
+
+A residential course for staff of the Bureau, UBOS Intake 04 of 2026: political economy, Uganda's history and its place in the world, leadership, Kiswahili, and military training.
+
+My syndicate's closing paper examined the impact of digital media and artificial intelligence on governance, national security, public opinion and socio-economic development in Uganda. It weighed online services and census tablets against deepfakes, cybercrime and the 2024 breach at the Bank of Uganda.
+
+Along the way I built the intake a small offline revision site, with flashcards, mock exams, a Kiswahili songbook and a shared leaderboard.
+
+Links: [See the paper](https://kanyeceejaya.github.io/#pp-nali), [See it under education](https://kanyeceejaya.github.io/#ed-nali)
+
+### UBOS Innovation Award
+
+Uganda Bureau of Statistics, 2025
+
+The Bureau's innovation award for 2025. It recognised the work on the dissemination portal, which put the 2024 Census results online down to parish level, and on Sanyu, the AI assistant that answers from those figures and cites every one.
+
+Links: [About Sanyu](https://kanyeceejaya.github.io/#p-sanyu), [About the portal](https://kanyeceejaya.github.io/#p-portal)
+
+### Employee of the year
+
+Uganda Bureau of Statistics, 2024
+
+Ranked the best-performing staff member on the Bureau's appraisal for the 2024 National Population and Housing Census.
+
+That year I was the primary developer of the census e-recruitment and field staff system, which managed more than 200,000 census personnel, and part of the team that cut the time it took to start enumeration.
+
+Links: [About the census system](https://kanyeceejaya.github.io/#p-census)
+
+## Toolkit
+
+- **Data and BI**: SQL (T-SQL and PL/SQL), dimensional modelling, ETL pipelines, Power BI, pandas and NumPy, QGIS and spatial data, SDMX.
+- **AI**: LLM tool calling, grounded question answering over statistical databases, RAG, MCP, automated report generation, model integration.
+- **Cloud and operations**: AWS, GCP, Docker, CI/CD, Linux and RHEL, Nginx, Apache, pm2, Windows and Linux deployments.
+- **Web and mobile**: React, Next.js, Node.js, Django, Flutter, React Native, WordPress, Drupal, CodeIgniter, Oracle APEX, Figma.
+- **Databases**: Oracle, SQL Server, MySQL, Postgres, SQLite, MongoDB.
+- **Languages**: Python, JavaScript and TypeScript, SQL, PHP, Dart, Java, C#, Kotlin, Swift, C.
+- **Testing and QA**: pytest, node:test, Vitest, regression suites with golden facts, monitoring, UAT support.
+
+## Beyond work
+
+- **Running**: I started a small beginners' running group in Kiwatule that later merged with others to form AKA Run Club. It taught me that consistency beats intensity.
+- **Rotary**: A Rotaractor since Makerere, now a Rotarian. Service above self, on weekdays and on weekends.
+- **Wedding committees**: Among my friends I'm the one who ends up on every wedding committee, usually building a small portal so everyone can see the pledges, the spending and the guest list. People trust me with the numbers.
+- **An old car**: Slowly restoring a 1987 car with a friend. Long arcs over quick wins, in code and otherwise.
+
+## Contact
+
+- Email: kakbr800@gmail.com
+- GitHub: https://github.com/kanyeceejayA
+- LinkedIn: https://www.linkedin.com/in/kanyesigye-akbr
+- X / Twitter: https://x.com/kanyeceejay
+- WhatsApp: https://wa.me/256776734087
+- CV (PDF): https://kanyeceejaya.github.io/docs/Kanyesigye-Akbr-CV-2026.pdf
+
+## Notes
+
+### Five rules for AI over official statistics
+
+4 August 2026. https://kanyeceejaya.github.io/notes/2026-08-five-rules-for-ai-over-official-statistics.html
+
+Generative systems are arriving in statistical dissemination across the continent this year, often procured quickly and judged more on how fluent they sound than on whether the numbers are right. A model that produces a confident, wrong district population hands the reputational bill to the office that published it. Official statistics carry value only because the public accepts the figure.
+
+So before Sanyu goes out as a public service of the Bureau, we wrote down the conditions we had to meet to feel safe releasing it. Five clauses, each one drawn from something the build itself forced on us. They're short enough to check.
+
+### 1. Figures originate in the statistical system
+
+The model selects what to retrieve; the database supplies the value. A number reaches the user only when a structured query returned it. This is the whole architecture in one sentence. The language model never generates a figure, it emits a typed function call, and the verified result is placed into the answer verbatim.
+
+### 2. Every figure carries its source
+
+Source table, survey or census, reference period and geography travel with the value, in a form the user can follow back to the publication. Charts render from the same verified values as the surrounding text, so a picture can't disagree with its caption.
+
+### 3. The system declines outside its data
+
+Where a question falls beyond published statistics, the correct response says so plainly. Silence about a limit counts as a defect. This one was harder to build than it sounds, because a fluent model would much rather answer.
+
+### 4. Evaluation is published before launch
+
+A named benchmark with ground truth, plus a regression suite that asserts exact published figures, runs automatically on every build. Ours has 45 deterministic tests, including a set of golden facts that must match the printed census tables to the digit. The results are public.
+
+### 5. A statistician signs
+
+Generated narrative passes a named human reviewer before publication. The machine drafts; the office remains the author.
+
+> The code demonstrates that the conditions are achievable, because the system standing beside it meets them.
+
+None of these rules is about a particular vendor or model. They're conditions any statistics office could adopt this year, and we'd like other offices to argue with them, adapt them, and tell us what we missed. The technical details of how Sanyu meets them are on the [work page](https://kanyeceejaya.github.io/#p-sanyu).
+
+### A week in Rome with SDMX
+
+6 October 2025. https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html
+
+Ivan Atwiine and I spent last week at the 10th SDMX Global Conference in Rome, hosted by the Bank of Italy. Three days of plenaries, then two days of training. The theme was "Smarter data for better insights", and the invitation had asked for exactly the kind of work we do: AI and machine learning applied to statistical pipelines, and dissemination tools that people actually use.
+
+We went to talk about the pipeline. The paper, "From fragmentation to intelligence", describes how UBOS pulls administrative, survey and census data straight from source systems into one platform, validates it on the way in, and publishes it through the national dashboard. The rule-based checks catch the obvious; the machine learning helps with anomalies, cleaning and classifying community-level submissions. It's the plumbing behind everything else the Bureau now does with data.
+
+### What I took home
+
+**SDMX is a join key, not a file format.** I had been treating it as a way to publish. The better way to see it: once two datasets share the same concepts, code lists and dimensions, a question that crosses them becomes cheap to answer. That is precisely what a chatbot over official statistics needs. Most of the effort in grounding a language model is agreeing on what an indicator means, and SDMX is that agreement, written down.
+
+**Validation can be data too.** The sessions on SDMX 3.0 and VTL, the validation and transformation language, described rules as something you exchange rather than something buried in a script. We write ours in Python. Some of them should probably live next to the data instead.
+
+**Everyone's problem is fragmentation.** Central banks, statistical offices, international agencies: the stories differed in scale, not in kind. The exciting demos all rested on the boring, careful part, which is people agreeing on structure. That was reassuring. It is the part we can control.
+
+The two training days made the tooling concrete: data structure definitions, dataflows, registries. It's one thing to read the standard, another to build a dataflow with someone who has done it a hundred times and watch where they slow down.
+
+### What changed back home
+
+We came back and started a prototype: take survey tables from the demographic and health survey and the household survey, and turn them into SDMX-ready structures. Reusable structure definitions by table shape rather than one per table, and a crosswalk of indicators so we can say quickly whether a figure exists in one survey, the other, or both. It's the first step toward cross-dataset retrieval, chatbot queries that span surveys, and briefs that write themselves from verified numbers.
+
+Rome itself: warm, loud, and exactly as good at coffee as advertised.

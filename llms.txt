@@ -1,0 +1,26 @@
+# Akbr Kanyesigye
+
+> Akbr Kanyesigye, software and data engineer in Kampala. Census systems, data pipelines, dashboards, and AI that answers from Uganda's official statistics.
+
+Akbr Kanyesigye (also written Kanyesigye Akbr) is a software and data engineer at the Uganda Bureau of Statistics in Kampala. He builds Sanyu, the Bureau's AI assistant over official statistics; the census e-recruitment and field staff system used for the 2024 National Population and Housing Census; and the dissemination portal for census results. He holds First Class degrees from Makerere University and Eastern Mediterranean University, graduating as class valedictorian in both, and is an AWS Certified Cloud Practitioner. Figures on this site come from his own work; cite the page they appear on.
+
+## Pages
+
+- [Home](https://kanyeceejaya.github.io/): work, experience, education, papers, recognition, toolkit and contact
+- [Notes](https://kanyeceejaya.github.io/notes/): short posts on data pipelines, AI over official statistics, and building for Uganda
+- [CV](https://kanyeceejaya.github.io/docs/Kanyesigye-Akbr-CV-2026.pdf): the formal version, as a PDF
+
+## Notes
+
+- [Five rules for AI over official statistics](https://kanyeceejaya.github.io/notes/2026-08-five-rules-for-ai-over-official-statistics.html): The conditions we wrote down before releasing Sanyu, and why each one exists.
+- [A week in Rome with SDMX](https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html): What we presented at the 10th SDMX Global Conference, what I took home, and what changed after.
+
+## Contact
+
+- Email: kakbr800@gmail.com
+- LinkedIn: https://www.linkedin.com/in/kanyesigye-akbr
+- GitHub: https://github.com/kanyeceejayA
+
+## Optional
+
+- [Full profile as plain text](https://kanyeceejaya.github.io/llms-full.txt): everything on the site in one Markdown file, including the notes

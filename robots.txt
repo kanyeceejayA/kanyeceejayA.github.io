@@ -1,0 +1,12 @@
+# Hello, robots. People are welcome too.
+
+User-agent: *
+Allow: /
+Disallow: /notes/template.html
+Disallow: /scripts/
+
+Sitemap: https://kanyeceejaya.github.io/sitemap.xml
+
+# A plain-text profile for language models lives at https://kanyeceejaya.github.io/llms.txt
+# and the whole site as one Markdown file at https://kanyeceejaya.github.io/llms-full.txt
+# GNU Terry Pratchett
