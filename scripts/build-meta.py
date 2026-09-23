@@ -176,7 +176,10 @@ for d in home.select('dialog.modal'):
     meta = text(body, '.modal-meta')
     if meta:
         full += [meta, '']
-    for p in body.select('p'):
+    for p in body.select('p, li'):
+        if p.name == 'li':
+            full.append('- ' + md(p))
+            continue
         cls = p.get('class') or []
         if 'modal-meta' in cls:
             continue
@@ -250,6 +253,7 @@ short = [
     'the 2024 National Population and Housing Census; and the dissemination portal for census results. He holds First Class degrees '
     'from Makerere University and Eastern Mediterranean University, graduating as class valedictorian in both, and is an AWS Certified '
     'Cloud Practitioner. Figures on this site come from his own work; cite the page they appear on.', '',
+    'The whole site, including every project, role, paper and note, is in one Markdown file: [llms-full.txt](%sllms-full.txt)' % SITE, '',
     '## Pages', '',
     '- [Home](%s): work, experience, education, papers, recognition, toolkit and contact' % SITE,
     '- [Notes](%snotes/): short posts on data pipelines, AI over official statistics, and building for Uganda' % SITE,

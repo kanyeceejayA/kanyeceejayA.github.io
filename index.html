@@ -244,6 +244,7 @@
           <li><strong>A prediction market for Africa</strong>, in the spirit of Polymarket: markets on the questions people here actually argue about, settled on sources they can check.</li>
           <li><strong>Sanyu</strong>, the Bureau's AI assistant over official statistics: more datasets, drafted statistical briefs, and a short code of practice for AI over official figures.</li>
           <li><strong>A harmonised data portal</strong> that brings datasets from across government agencies into one place, so service delivery can rest on shared figures.</li>
+          <li><strong>Open tools for census and survey teams</strong>: csync, which syncs CSPro data with your own code, and a CSPro skill that teaches AI assistants to work on survey apps.</li>
           <li><strong>TuuraHub</strong>, a property management product for East African landlords, in beta on the side.</li>
           <li><strong>Azure Data Fundamentals</strong>, the next certificate after AWS Cloud Practitioner.</li>
         </ul>
@@ -309,19 +310,21 @@
 
               <article class="sheet with-media" id="p-portal" data-audience="Official statistics, at the Uganda Bureau of Statistics" data-year="2025" data-kind="Data platforms">
                 <div class="sheet-body">
-                  <h4 class="sheet-title"><a href="https://statistics.ubos.org" target="_blank" rel="noopener">UBOS dissemination portal</a></h4>
+                  <h4 class="sheet-title"><a href="https://statistics.ubos.org/" target="_blank" rel="noopener">UBOS dissemination portal</a></h4>
                   <span class="sheet-meta">2024 to now, data platform</span>
-                  <p class="sheet-what">The public home of the 2024 Census results, down to parish level.</p>
-                  <p>Dashboards, maps and tabulations for the census, the education and aquaculture censuses, and the national standard indicators. I led a team of three on the platform and built the ingestion and reporting pipelines underneath it, including the PDF table extraction that makes decades of survey reports queryable.</p>
+                  <p class="sheet-what">One home for Uganda's official statistics, across more than six national datasets.</p>
+                  <p>The 2024 National Population and Housing Census down to parish level, the Baseline Education Census 2025 and the Uganda Aquaculture Census 2025 are live, with harmonised community and GBV data, the national standard indicators, the Malaria Indicator Survey 2024-25 and a census-based multidimensional poverty index on the way. Each comes as dashboards, maps and tabulations.</p>
+                  <p>I led a team of three on the platform and built the ingestion and reporting pipelines underneath it, including the PDF table extraction that makes decades of survey reports queryable.</p>
                   <ul class="facts">
+                    <li><b>6+</b><span>national datasets in one place</span></li>
                     <li><b>500,000+</b><span>public users</span></li>
                     <li><b>3</b><span>people on the team I led</span></li>
                   </ul>
                   <p class="stack">Python and SQL pipelines, Power BI, QGIS.</p>
-                  <a class="out" href="https://statistics.ubos.org" target="_blank" rel="noopener">statistics.ubos.org</a>
+                  <a class="out" href="https://statistics.ubos.org/" target="_blank" rel="noopener">Visit statistics.ubos.org</a>
                 </div>
                 <figure class="sheet-media">
-                  <img src="images/shot-portal-nphc.jpg" data-thumb="images/thumbs/portal.jpg" alt="The Census 2024 dashboard on the UBOS portal: total population and household counts above cards for the data explorer, map explorer and visualisation builder" width="1200" height="750" loading="lazy">
+                  <img src="images/shot-portal.jpg" data-thumb="images/thumbs/portal.jpg" alt="The UBOS dissemination portal: the Census 2024, Baseline Education Census and Aquaculture Census cards, with four more datasets marked coming soon" width="1200" height="758" loading="lazy">
                 </figure>
               </article>
 
@@ -331,6 +334,40 @@
                   <span class="sheet-meta">2023 to now, data work</span>
                   <p class="sheet-what">Classification, collection tools, GIS tooling, cloud and security.</p>
                   <p>Automated classification for coding census and survey responses, which removed months of manual work. The data collection instruments used for national enumeration. Python and QGIS tooling that sped up map preparation for the GIS team. The Bureau's AWS and GCP estate, including a shared outbound proxy that consolidated external service access and traffic filtering. Phishing exercises with the security team.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="group-block">
+            <h3 class="group">Tools for census and survey teams</h3>
+            <div class="sheets">
+              <article class="sheet" id="p-csync" data-mono="sync" data-audience="Tools for census and survey teams" data-year="2026" data-kind="Products and open source">
+                <div class="sheet-body">
+                  <h4 class="sheet-title"><a href="https://github.com/kanyeceejayA/csync" target="_blank" rel="noopener">csync, a CSPro synchronisation suite</a></h4>
+                  <span class="sheet-meta">2026, open source</span>
+                  <p class="sheet-what">Sync any CSPro survey between a CSWeb server and your own code.</p>
+                  <p>Most census and survey fieldwork in the region runs on CSPro: tablets collect cases and sync them through a CSWeb server. Getting those cases in and out from your own code is the hard part. csync reads a survey's dictionary and does the rest. Pull cases into a plain SQLite store, add, edit or remove them as ordinary Python dictionaries, and push them back so they reach the tablets, with the vector clocks CSEntry expects.</p>
+                  <p>It works for any dictionary, from assignments and staff lists to a full household questionnaire, and speaks both CSWeb 8.0 and 8.1. It comes as a Python library, a command line, a one-page web front end, and readers and writers for CSPro's own data files.</p>
+                  <ul class="facts">
+                    <li><b>Any</b><span>CSPro dictionary, with no field names hard-coded</span></li>
+                    <li><b>8.0 and 8.1</b><span>CSWeb versions it speaks</span></li>
+                    <li><b>0</b><span>third-party packages the core library needs</span></li>
+                  </ul>
+                  <p class="stack">Python's standard library, SQLite and the CSWeb REST API, with an optional Flask page.</p>
+                  <a class="out" href="https://github.com/kanyeceejayA/csync" target="_blank" rel="noopener">csync on GitHub</a>
+                </div>
+              </article>
+
+              <article class="sheet" id="p-cspro-skill" data-mono="AI" data-audience="Tools for census and survey teams" data-year="2026" data-kind="AI">
+                <div class="sheet-body">
+                  <h4 class="sheet-title"><a href="https://github.com/kanyeceejayA/csync/tree/main/skills/cspro-toolkit" target="_blank" rel="noopener">CSPro toolkit, a skill for AI assistants</a></h4>
+                  <span class="sheet-meta">2026, AI</span>
+                  <p class="sheet-what">Teaches Claude and other AI assistants to read, edit and check CSPro survey apps.</p>
+                  <p>A CSPro application is a set of files that must stay in step: the dictionary, the logic, the forms and the run files. CSPro can't compile an entry app from the command line, so an AI assistant editing one is working blind. This skill gives it the map.</p>
+                  <p>It explains what each file is for and how a change in the dictionary ripples into the logic and run files. It adds a linter that pre-checks logic edits before anyone opens CSPro, walks through building and releasing a deployment package, and shows how to ask a CSWeb server for its dictionaries, case counts, sync history and cases. It is packaged as an Agent Skill, the SKILL.md format that Claude and other assistants can load.</p>
+                  <p class="stack">Markdown instructions, Python helper scripts, and a reference for the CSWeb API.</p>
+                  <a class="out" href="https://github.com/kanyeceejayA/csync/tree/main/skills/cspro-toolkit" target="_blank" rel="noopener">The skill on GitHub</a>
                 </div>
               </article>
             </div>
@@ -643,12 +680,18 @@
         <div class="edu-group">
           <h3 class="group">Programmes and courses</h3>
           <ul class="edu">
+            <li id="ed-huduma">
+              <span class="when">From 2026</span>
+              <span class="what">Huduma Fellowship, class of 2026</span>
+              <span class="inst">LéO Africa Institute and Konrad-Adenauer-Stiftung</span>
+              <p class="note">Leadership, public affairs and policy making for people in Uganda's public and civic service. <button type="button" class="linkish" data-modal="m-huduma">More about it</button></p>
+            </li>
             <li id="ed-nali">
               <span class="when">Jun to Jul 2026</span>
               <span class="what">Political Education, Transformative and Leadership Development Course</span>
               <span class="inst">National Leadership Institute, Kyankwanzi</span>
               <span class="grade">Completed 30 July 2026</span>
-              <p class="note">A residential course for UBOS Intake 04 of 2026, including military training. <button type="button" class="linkish" data-modal="m-nali">More about it</button></p>
+              <p class="note">A residential course in patriotism, political education and military training, time on the shooting range included. <button type="button" class="linkish" data-modal="m-nali">More about it</button></p>
             </li>
             <li>
               <span class="when">Jan to Jul 2019</span>
@@ -677,6 +720,7 @@
               <span class="what">AWS Certified Cloud Practitioner</span>
               <span class="inst">Amazon Web Services</span>
               <span class="grade">Valid to Sep 2028</span>
+              <p class="note"><button type="button" class="linkish" data-modal="m-aws">See the badge</button></p>
             </li>
             <li>
               <span class="when">Feb 2023</span>
@@ -721,7 +765,7 @@
             <li id="pp-nali">
               <span class="when">2026</span>
               <span class="what">The impact of digital media and artificial intelligence on governance, national security, public opinion and socio-economic development in Uganda</span>
-              <span class="inst">Syndicate 2, UBOS Intake 04 of 2026</span>
+              <span class="inst">Syndicate 2, National Leadership Institute, Kyankwanzi</span>
               <span class="grade">Presentation</span>
               <p class="note">Political Education, Transformative and Leadership Development Course, National Leadership Institute, Kyankwanzi, July 2026. Both sides of the question, from online services and census tablets to deepfakes, cybercrime and the 2024 breach at the Bank of Uganda.</p>
             </li>
@@ -775,9 +819,10 @@
           <p>Small things I'm glad happened.</p>
         </div>
         <ul class="marks">
+          <li><span class="year">2026</span><span class="what"><button type="button" class="more" data-modal="m-huduma">Huduma Fellow, class of 2026</button><small>LéO Africa Institute and Konrad-Adenauer-Stiftung</small></span></li>
           <li><span class="year">2026</span><span class="what"><button type="button" class="more" data-modal="m-nali">Completed the leadership course at Kyankwanzi</button><small>National Leadership Institute, 30 July 2026</small></span></li>
           <li><span class="year">2025</span><span class="what"><button type="button" class="more" data-modal="m-innovation">UBOS Innovation Award</button><small>Uganda Bureau of Statistics</small></span></li>
-          <li><span class="year">2025</span><span class="what"><a class="jump" href="#ed-aws">AWS Certified Cloud Practitioner</a><small>Amazon Web Services, valid to 2028</small></span></li>
+          <li><span class="year">2025</span><span class="what"><button type="button" class="more" data-modal="m-aws">AWS Certified Cloud Practitioner</button><small>Amazon Web Services, valid to 2028</small></span></li>
           <li><span class="year">2024</span><span class="what"><button type="button" class="more" data-modal="m-eoty">Employee of the year</button><small>Best-performing staff member on the Census appraisal, UBOS</small></span></li>
           <li><span class="year">2022</span><span class="what"><a class="jump" href="#ed-emu">Class valedictorian, 4.0 of 4.0</a><small>MSc Information Technology, Eastern Mediterranean University</small></span></li>
           <li class="has-thumb"><span class="year">2019</span><span class="what"><button type="button" class="more" data-modal="m-4ir">Appointed to the 4th Industrial Revolution Taskforce</button><small>Presidential appointment, Ministry of ICT and National Guidance</small></span><button type="button" class="thumb" data-modal="m-4ir" aria-label="See the photo with the President"><img src="images/akbr-kanyesigye-talks-to-he-president-museveni.jpg" alt="" width="800" height="836" loading="lazy"></button></li>
@@ -795,7 +840,7 @@
         </div>
         <dl class="kit">
           <div><dt>Data and BI</dt><dd>SQL (T-SQL and PL/SQL), dimensional modelling, ETL pipelines, Power BI, pandas and NumPy, QGIS and spatial data, SDMX.</dd></div>
-          <div><dt>AI</dt><dd>LLM tool calling, grounded question answering over statistical databases, RAG, MCP, automated report generation, model integration.</dd></div>
+          <div><dt>AI</dt><dd>LLM tool calling, grounded question answering over statistical databases, RAG, MCP, automated report generation, model integration, Agent Skills.</dd></div>
           <div><dt>Cloud and operations</dt><dd>AWS, GCP, Docker, CI/CD, Linux and RHEL, Nginx, Apache, pm2, Windows and Linux deployments.</dd></div>
           <div><dt>Web and mobile</dt><dd>React, Next.js, Node.js, Django, Flutter, React Native, WordPress, Drupal, CodeIgniter, Oracle APEX, Figma.</dd></div>
           <div><dt>Databases</dt><dd>Oracle, SQL Server, MySQL, Postgres, SQLite, MongoDB.</dd></div>
@@ -879,9 +924,10 @@
       <div class="modal-body">
         <h2 id="m-nali-t">Kyankwanzi, 2026</h2>
         <p class="modal-meta">Political Education, Transformative and Leadership Development Course. National Leadership Institute, Kyankwanzi. Completed 30 July 2026.</p>
-        <p>A residential course for staff of the Bureau, UBOS Intake 04 of 2026: political economy, Uganda's history and its place in the world, leadership, Kiswahili, and military training.</p>
+        <p>A residential course about loving and serving your country. The lectures ran through Uganda's history from before colonial rule, political economy, how the country's position shapes its national goals, and what patriotism asks of a public servant. We sang in Kiswahili, marched in formation, and learned to think of the nation first.</p>
+        <p>The other half was military. Early mornings of drill and physical training, and time on the range learning to handle and shoot a rifle.</p>
         <p>My syndicate's closing paper examined the impact of digital media and artificial intelligence on governance, national security, public opinion and socio-economic development in Uganda. It weighed online services and census tablets against deepfakes, cybercrime and the 2024 breach at the Bank of Uganda.</p>
-        <p>Along the way I built the intake a small offline revision site, with flashcards, mock exams, a Kiswahili songbook and a shared leaderboard.</p>
+        <p>Along the way I built my classmates a small offline revision site, with flashcards, mock exams, a Kiswahili songbook and a shared leaderboard.</p>
         <p class="modal-links"><a href="#pp-nali">See the paper</a> <a href="#ed-nali">See it under education</a></p>
       </div>
     </div>
@@ -905,9 +951,43 @@
       <div class="modal-body">
         <h2 id="m-eoty-t">Employee of the year</h2>
         <p class="modal-meta">Uganda Bureau of Statistics, 2024</p>
-        <p>Ranked the best-performing staff member on the Bureau's appraisal for the 2024 National Population and Housing Census.</p>
-        <p>That year I was the primary developer of the census e-recruitment and field staff system, which managed more than 200,000 census personnel, and part of the team that cut the time it took to start enumeration.</p>
-        <p class="modal-links"><a href="#p-census">About the census system</a></p>
+        <p>Ranked the best-performing staff member on the Bureau's appraisal for the 2024 National Population and Housing Census. That year I worked on the census from the first application to the last table.</p>
+        <ul class="modal-list">
+          <li><strong>Recruitment.</strong> I was the primary developer of the e-recruitment and field staff system, which managed more than 200,000 census personnel.</li>
+          <li><strong>Maps.</strong> I wrote Python and QGIS scripts that sped up map preparation for the GIS team.</li>
+          <li><strong>Enumeration.</strong> I worked on the data collection tool the enumerators used on their tablets, restructured it so it ran faster, and helped cut the time it took to start enumeration.</li>
+          <li><strong>Processing.</strong> I automated steps of data processing in Python and helped bring AI into the coding of responses, which saved months of manual work.</li>
+        </ul>
+        <p class="modal-links"><a href="#p-census">About the census system</a> <a href="#xp-ubos">The full role</a></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal has-media badge-modal" id="m-aws" aria-labelledby="m-aws-t">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <figure class="modal-media badge-media">
+        <img src="images/aws-ccp-badge.png" alt="The AWS Certified Cloud Practitioner badge" width="480" height="480" loading="lazy">
+      </figure>
+      <div class="modal-body">
+        <h2 id="m-aws-t">AWS Certified Cloud Practitioner</h2>
+        <p class="modal-meta">Amazon Web Services. Issued September 2025, valid until September 2028.</p>
+        <p>AWS describes it this way: earners have a fundamental understanding of IT services and their uses in the AWS Cloud, have demonstrated cloud fluency and foundational AWS knowledge, and can identify the essential AWS services needed to set up AWS-focused projects.</p>
+        <p>It sits behind the day job: I architect and run the Bureau's AWS and GCP estate, from Docker deployments to the shared outbound proxy.</p>
+        <p class="modal-links"><a class="btn small primary" href="https://www.credly.com/badges/e7259f2c-476b-438c-b92f-f4642edbecc7" target="_blank" rel="noopener">Verify it on Credly</a></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="m-huduma" aria-labelledby="m-huduma-t">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="modal-body">
+        <h2 id="m-huduma-t">Huduma Fellow, class of 2026</h2>
+        <p class="modal-meta">LéO Africa Institute and Konrad-Adenauer-Stiftung</p>
+        <p>Huduma is Swahili for service. The fellowship is a leadership programme for people who serve in Uganda's public and civic sectors, and each class takes in 15 fellows.</p>
+        <p>Fellows meet for seminars and workshops on leadership, public affairs and policy making, and go back to their workplaces in between, with mentorship, study tours and a project along the way. I joined the 2026 class from the Uganda Bureau of Statistics.</p>
+        <p class="modal-links"><a href="https://leoafricainstitute.org/programs/huduma-fellowship" target="_blank" rel="noopener">About the Huduma Fellowship</a></p>
       </div>
     </div>
   </dialog>
