@@ -6,7 +6,7 @@ Plain HTML, CSS and a little JavaScript, served by GitHub Pages. No framework an
 
 ## What lives where
 
-- `index.html` is the home page: intro, now, a few featured projects, the two latest notes, experience, papers, recognition, education, toolkit, beyond work and contact, plus the story pop-ups (`dialog.modal`).
+- `index.html` is the home page: intro, now, the two latest notes, a few featured projects, experience, papers, recognition, education, toolkit, beyond work and contact, plus the story pop-ups (`dialog.modal`).
 - `projects/index.html` lists every project, with the group-by switch. It is the one place to edit projects.
 - `notes/` is the blog. Each post is a plain HTML file, listed in `notes/index.html`.
 - `404.html` is served by GitHub Pages for any missing path, so every link in it is absolute.
@@ -14,7 +14,7 @@ Plain HTML, CSS and a little JavaScript, served by GitHub Pages. No framework an
 - `js/site.js` runs the theme switch, menu drawer, section rail and phone section pill, years strip, the group-by switch, project rows and their pop-up, the compact and summary views for roles (with only the four most recent shown at first), compact and full views for papers, hearts and comments on notes, and the larger view for screenshots in notes. An old home-page link to a project that is not featured goes on to the projects page.
 - `js/extras.js` adds the console greeting, `help()` and the `akbr.*` console commands, and the hidden extras. It loads `js/arcade.js` and `js/desk.js` only when someone finds them.
 - `js/arcade.js` is the "Take a break" picker. Each game lives in `js/games/` and loads only when chosen: `boda.js` (Boda Dispatch), `rolex.js` (Rolex Rush) and `route.js` (Enumerator's Route, whose eight parishes are the `LEVELS` at the top of the file). Scores are kept in the visitor's browser only.
-- `js/games/letters.js` is Letter Blaster: a small ship that shoots the page's own letters, with sound made on the fly by Web Audio, and puts the text back when you stop. It wraps letters in `<blast-l>` elements, which no stylesheet targets, so the page keeps its look. Ways in: the fourth card in the arcade, typing `pew`, holding the footer's full stop, tapping the gold dot after the name on the home page, the 404 page's button, and `akbr.pew()` in the console.
+- `js/games/letters.js` is Letter Blaster: a small ship that shoots the page's own letters, with sound made on the fly by Web Audio, and puts the text back when you stop. Letters score points, with a multiplier for chained hits, and the best score is kept in the browser. Flying into text costs one of three shields, and the ship breaks up at zero; Down or S brakes. It wraps letters in `<blast-l>` elements, which no stylesheet targets, so the page keeps its look. Ways in: the fourth card in the arcade, typing `pew`, holding the footer's copyright line (a quick tap on its full stop opens the arcade instead), tapping the gold dot after the name on the home page, the 404 page's button, and `akbr.pew()` in the console.
 - `images/` holds the portrait, project screenshots, row thumbnails (`images/thumbs/`), desk prints (`images/desk/`), screenshots for notes (`images/notes/`, with square thumbnails for the home page in `images/notes/thumbs/`), icons and the social card (`images/og-card.jpg`).
 - `docs/` holds the current CV and the slides linked from notes. Old CVs stay local and are listed in `.gitignore`.
 

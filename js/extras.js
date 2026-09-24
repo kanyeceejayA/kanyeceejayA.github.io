@@ -141,7 +141,7 @@
         '%c• Tap my name at the top three times. Or press and hold the portrait.\n' +
         '• Scroll to the very bottom and press Space. Or tap the full stop after Kampala in the footer.\n' +
         '• Up, up, down, down, left, right, left, right, B, A.\n' +
-        '• Type %cpew%c to shoot the letters on any page. On a phone, press and hold the full stop after Kampala. On the home page, tap the gold dot after my name.\n' +
+        '• Type %cpew%c to shoot the letters on any page. On a phone, press and hold the copyright line at the bottom. On the home page, tap the gold dot after my name.\n' +
         '• Drag the portrait. Double-click it to turn it over.\n' +
         '• Type %cclacks%c for a name that should keep being spoken.\n' +
         '• Press ? if you want a nudge instead.',
@@ -192,26 +192,27 @@
   });
 
   document.addEventListener('click', function (e) {
-    if (stopFired && e.target.closest && e.target.closest('.fullstop')) { stopFired = false; e.preventDefault(); return; }
+    if (stopFired && e.target.closest && e.target.closest('.copyline')) { stopFired = false; e.preventDefault(); return; }
     if (e.target.closest && e.target.closest('[data-play]')) { e.preventDefault(); play(); }
     else if (e.target.closest && e.target.closest('[data-desk]')) { e.preventDefault(); desk(); }
     else if (e.target.closest && e.target.closest('[data-blast]')) { e.preventDefault(); blast(); }
   });
 
-  /* ---------- the full stop in the footer: a tap opens the games, holding it starts the letter blaster ---------- */
+  /* ---------- the footer: a tap on the full stop opens the games; holding it, or anywhere on the copyright line, starts the letter blaster ---------- */
   var stopHold = 0, stopGlow = 0, stopFired = false, stopEl = null;
   function stopCancel() { clearTimeout(stopHold); clearTimeout(stopGlow); if (stopEl) stopEl.classList.remove('charging'); stopEl = null; }
   document.addEventListener('pointerdown', function (e) {
-    var fs = e.target.closest && e.target.closest('.fullstop');
+    var line = e.target.closest && e.target.closest('.copyline');
+    var fs = line && line.querySelector('.fullstop');
     if (!fs || (e.pointerType === 'mouse' && e.button !== 0)) return;
     stopCancel(); stopFired = false; stopEl = fs;
     stopGlow = setTimeout(function () { fs.classList.add('charging'); }, 180);
     stopHold = setTimeout(function () { stopFired = true; stopCancel(); blast(); }, 700);
   });
   ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) {
-    document.addEventListener(ev, function (e) { if (stopEl && (ev !== 'pointerleave' || e.target === stopEl)) stopCancel(); }, true);
+    document.addEventListener(ev, function (e) { if (stopEl && (ev !== 'pointerleave' || (e.target.closest && e.target.closest('.copyline') === e.target))) stopCancel(); }, true);
   });
-  document.addEventListener('contextmenu', function (e) { if (e.target.closest && e.target.closest('.fullstop') && (stopEl || stopFired)) e.preventDefault(); });
+  document.addEventListener('contextmenu', function (e) { if (e.target.closest && e.target.closest('.copyline') && (stopEl || stopFired)) e.preventDefault(); });
 
   /* ---------- my name: three quick taps open the games; the gold dot after it starts the letter blaster ---------- */
   var name = document.querySelector('.hero h1');

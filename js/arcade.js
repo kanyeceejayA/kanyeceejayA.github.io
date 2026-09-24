@@ -74,7 +74,7 @@
   function bestLine(id) {
     if (id === 'boda') { var b = store('boda-best'); return b ? 'Best day: ' + ugx(b) : 'Not played yet'; }
     if (id === 'rolex') { var r = store('rolex-best'); return r ? 'Best rush: ' + ugx(r) : 'Not played yet'; }
-    if (id === 'letters') return 'Plays on this page. Esc to stop';
+    if (id === 'letters') { var lb = store('letters-best'); return lb ? 'Best score: ' + ugx(lb).replace('/=', '') : 'Plays on this page. Esc to stop'; }
     if (id === 'route') {
       var prog = store('route-progress') || {};
       var done = Object.keys(prog).length;

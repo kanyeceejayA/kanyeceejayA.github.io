@@ -592,8 +592,11 @@
       var pct = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
       jump.style.setProperty('--p', pct.toFixed(3));
       var past = window.scrollY > (hero ? hero.offsetHeight * 0.6 : 300);
+      /* the pill steps aside once the footer is on screen, so the footer stays easy to tap */
+      var foot = document.querySelector('footer');
+      var atFoot = foot ? foot.getBoundingClientRect().top < window.innerHeight - 8 : false;
       rail.classList.toggle('show', past);
-      jump.classList.toggle('show', past);
+      jump.classList.toggle('show', past && !atFoot);
     };
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
     onScroll();

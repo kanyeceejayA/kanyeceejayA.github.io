@@ -1069,7 +1069,7 @@ dialog.modal.shot-modal { max-width: calc(100% - 24px); background: #111; }
   appearance: none; border: 0; background: none; padding: 0 2px; margin: 0; font: inherit; color: inherit;
   cursor: pointer; border-radius: 50%; transition: color .2s, transform .2s var(--ease); position: relative;
 }
-.fullstop::before { content: ""; position: absolute; inset: -12px -14px; }
+.fullstop::before { content: ""; position: absolute; inset: -20px -36px -16px -20px; }
 .fullstop:hover, .fullstop:focus-visible { color: var(--mark); transform: scale(1.6); }
 .toast {
   position: fixed; left: 50%; bottom: 22px; z-index: 80; max-width: min(460px, calc(100% - 32px));
@@ -1092,18 +1092,34 @@ blast-l.hit { visibility: hidden; }
 @media (max-width: 640px) {
   .blast-hud { grid-auto-flow: row; grid-template-columns: 1fr auto auto; width: calc(100% - 24px); border-radius: 16px; padding: 10px 10px 10px 14px; white-space: normal; }
   .blast-msg { grid-column: 1 / -1; grid-row: 2; }
+  .blast-stats { min-width: 0; overflow: hidden; gap: 2px 8px; }
+  .blast-score { font-size: .95rem; }
+  .blast-shields { display: none !important; }
+  .blast-hud.ended { grid-template-columns: 1fr auto auto; }
 }
-.blast-count { font-family: var(--font-display); font-weight: 600; }
+.blast-stats { display: inline-flex; align-items: baseline; flex-wrap: nowrap; gap: 2px 10px; }
+.blast-score { font-family: var(--font-display); font-weight: 600; font-variant-numeric: tabular-nums; }
+.blast-best, .blast-count { font-size: var(--text-xs); color: color-mix(in srgb, var(--paper) 75%, transparent); font-variant-numeric: tabular-nums; }
+.blast-shields { display: inline-flex; gap: 3px; align-self: center; }
+.blast-shields svg { width: 12px; height: 12px; fill: var(--mark); transition: opacity .3s; }
+.blast-shields svg.lost { opacity: .2; }
+.blast-hud.ended .blast-sound { display: none; }
 .blast-msg { color: color-mix(in srgb, var(--paper) 75%, transparent); font-size: var(--text-xs); }
 .blast-hud button {
   appearance: none; border: 0; border-radius: 999px; padding: .4em 1em; cursor: pointer;
   background: var(--mark); color: #1E1C19; font: inherit; font-size: var(--text-xs); font-weight: 600;
 }
-.blast-hud .blast-sound { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--paper) 40%, transparent); font-weight: 400; }
-.blast-hud .blast-sound[aria-pressed="false"] { opacity: .7; }
+.blast-hud .blast-sound {
+  width: 32px; height: 32px; padding: 0; display: grid; place-items: center; background: transparent; color: var(--paper);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--paper) 40%, transparent);
+}
+.blast-hud .blast-sound svg { width: 18px; height: 18px; }
+.blast-hud .blast-sound[aria-pressed="false"] { opacity: .65; }
 /* the hidden ways in: the gold dot after my name, and holding the footer's full stop */
-.hero h1 .h1-dot { cursor: crosshair; }
+.hero h1 .h1-dot { cursor: crosshair; position: relative; }
+.hero h1 .h1-dot::after { content: ""; position: absolute; inset: -6px -30px -14px -8px; }
 .fullstop { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; transition: transform .5s var(--ease), color .3s; }
+.copyline { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
 .fullstop.charging { transform: scale(2.4); color: var(--mark); }
 
 /* the arcade */
