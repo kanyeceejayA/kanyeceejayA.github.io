@@ -216,6 +216,7 @@
     var el = document.getElementById(id);
     if (!el) return;
     if (el.matches('.work.rows .sheet')) { openProject(el, null); return; }
+    revealRole(el);
     el.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
     if (history.replaceState) history.replaceState(null, '', '#' + id);
     setTimeout(function () { flash(id); }, 380);
@@ -228,10 +229,16 @@
     if (el && el.matches(FLASHABLE)) { e.preventDefault(); goTo(id); }
   });
   if (location.hash.length > 1) {
+    var hashId = location.hash.slice(1);
+    /* an old link to a project that now lives only on the projects page */
+    if (/^p-/.test(hashId) && !document.getElementById(hashId) && document.querySelector('.hero')) {
+      location.replace('projects/' + location.hash);
+    }
     setTimeout(function () {
-      var target = document.getElementById(location.hash.slice(1));
+      var target = document.getElementById(hashId);
       if (target && target.matches('.work.rows .sheet')) openProject(target, null);
-      else flash(location.hash.slice(1));
+      else if (target && revealRole(target)) goTo(hashId);
+      else flash(hashId);
     }, 300);
   }
 
@@ -294,24 +301,58 @@
     });
   }
 
-  /* ---------- experience: compact, summary or full ---------- */
+  /* ---------- experience: a few roles at first, compact or summary ---------- */
   var xp = document.getElementById('experience');
   var xpBtns = Array.prototype.slice.call(document.querySelectorAll('[data-xp-view]'));
   var xpDetails = Array.prototype.slice.call(document.querySelectorAll('#experience .entry details'));
   function setXpView(v, save) {
     if (!xp) return;
+    if (v !== 'summary') v = 'compact';
     xpBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-xp-view') === v ? 'true' : 'false'); });
     xp.classList.toggle('xp-compact', v === 'compact');
-    xp.classList.toggle('xp-full', v === 'full');
-    xpDetails.forEach(function (d) { d.open = v === 'full'; });
+    xpDetails.forEach(function (d) { d.open = false; });
     if (save) { try { localStorage.setItem('xp-view', v); } catch (e) {} }
   }
   xpBtns.forEach(function (b) { b.addEventListener('click', function () { setXpView(b.getAttribute('data-xp-view'), true); }); });
-  try {
-    var v0 = localStorage.getItem('xp-view');
-    if (v0 === 'compact' || v0 === 'summary' || v0 === 'full') setXpView(v0, false);
-    else if (window.matchMedia('(max-width: 759px)').matches) setXpView('compact', false);
-  } catch (e) {}
+  var xpStart = 'compact';
+  try { var v0 = localStorage.getItem('xp-view'); if (v0 === 'summary' || v0 === 'full') xpStart = 'summary'; } catch (e) {}
+  setXpView(xpStart, false);
+
+  var XP_FEW = 4, xpAllBtn = null;
+  var xpEntries = xp ? Array.prototype.slice.call(xp.querySelectorAll('.entry')) : [];
+  function setFewRoles(few) {
+    if (!xpAllBtn) return;
+    xp.classList.toggle('xp-few', few);
+    xpAllBtn.setAttribute('aria-expanded', few ? 'false' : 'true');
+    xpAllBtn.textContent = few ? 'Show all ' + xpEntries.length + ' roles' : 'Show fewer roles';
+  }
+  /* if a link or a bar points at a hidden role, show them all first; true when it changed anything */
+  function revealRole(el) {
+    if (!xp || !xpAllBtn || !xp.classList.contains('xp-few') || !el.classList.contains('xp-more')) return false;
+    setFewRoles(false);
+    return true;
+  }
+  if (xp && xpEntries.length > XP_FEW + 1) {
+    xpEntries.forEach(function (li, i) { if (i >= XP_FEW) li.classList.add('xp-more'); });
+    Array.prototype.forEach.call(xp.querySelectorAll('.chapter'), function (ch) {
+      if (!ch.querySelector('.entry:not(.xp-more)')) ch.classList.add('xp-more-chapter');
+    });
+    var xpRow = document.createElement('p');
+    xpRow.className = 'xp-all';
+    xpAllBtn = document.createElement('button');
+    xpAllBtn.type = 'button';
+    xpAllBtn.className = 'see-more';
+    xpAllBtn.addEventListener('click', function () {
+      var few = !xp.classList.contains('xp-few');
+      setFewRoles(few);
+      if (few) xpRow.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+    });
+    xpRow.appendChild(xpAllBtn);
+    var chapters = xp.querySelectorAll('.chapter');
+    var lastChapter = chapters[chapters.length - 1];
+    lastChapter.parentNode.insertBefore(xpRow, lastChapter.nextSibling);
+    setFewRoles(true);
+  }
 
   /* ---------- story pop-ups ---------- */
   var lastOpener = null;
@@ -496,8 +537,10 @@
 
   /* back, forward or a pasted link to a project opens it */
   window.addEventListener('hashchange', function () {
-    var t = document.getElementById(location.hash.slice(1));
+    var id = location.hash.slice(1);
+    var t = document.getElementById(id);
     if (t && t.matches('.work.rows .sheet')) openProject(t, null);
+    else if (!t && /^p-/.test(id) && document.querySelector('.hero')) location.assign('projects/' + location.hash);
   });
 
   /* ---------- section rail and jump pill ---------- */

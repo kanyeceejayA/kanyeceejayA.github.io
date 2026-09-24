@@ -105,9 +105,10 @@
         <ul>
           <li><a href="../#work">Work</a></li>
           <li><a href="../#experience">Experience</a></li>
-          <li><a href="../#education">Education</a></li>
-          <li><a href="../#papers">Papers</a></li>
           <li><a href="./" aria-current="true">Notes</a></li>
+          <li><a href="../#papers">Papers</a></li>
+          <li><a href="../#education">Education</a></li>
+          <li class="wide-only"><a href="../projects/">Projects</a></li>
           <li><a href="../#contact">Contact</a></li>
         </ul>
       </nav>
@@ -125,11 +126,12 @@
   <div id="menu" class="menu" hidden>
     <nav aria-label="Sections">
       <ol>
-        <li><a class="big" href="../#work"><span class="dot" aria-hidden="true"></span><span class="t">Work</span><span class="d">What I've built</span></a></li>
+        <li><a class="big" href="../#work"><span class="dot" aria-hidden="true"></span><span class="t">Work</span><span class="d">A few recent projects</span></a></li>
         <li><a class="big" href="../#experience"><span class="dot" aria-hidden="true"></span><span class="t">Experience</span><span class="d">Where I've worked</span></a></li>
-        <li><a class="big" href="../#education"><span class="dot" aria-hidden="true"></span><span class="t">Education</span><span class="d">Degrees, courses, certificates</span></a></li>
-        <li><a class="big" href="../#papers"><span class="dot" aria-hidden="true"></span><span class="t">Papers</span><span class="d">Things I've written</span></a></li>
         <li><a class="big" href="./" aria-current="true"><span class="dot" aria-hidden="true"></span><span class="t">Notes</span><span class="d">A tiny blog</span></a></li>
+        <li><a class="big" href="../#papers"><span class="dot" aria-hidden="true"></span><span class="t">Papers</span><span class="d">Things I've written</span></a></li>
+        <li><a class="big" href="../#education"><span class="dot" aria-hidden="true"></span><span class="t">Education</span><span class="d">What I've studied</span></a></li>
+        <li><a class="big" href="../projects/"><span class="dot" aria-hidden="true"></span><span class="t">Projects</span><span class="d">The full list</span></a></li>
         <li><a class="big" href="../#contact"><span class="dot" aria-hidden="true"></span><span class="t">Contact</span><span class="d">Say hello</span></a></li>
       </ol>
     </nav>
@@ -159,28 +161,28 @@
           <p class="when"><time datetime="2026-08-04">4 August 2026</time></p>
         </header>
         <div class="body">
-          <p>Generative systems are arriving in statistical dissemination across the continent this year, often procured quickly and judged more on how fluent they sound than on whether the numbers are right. A model that produces a confident, wrong district population hands the reputational bill to the office that published it. Official statistics carry value only because the public accepts the figure.</p>
+          <p>Statistics offices across the continent are buying generative AI this year, often in a hurry. They tend to judge it by how fluent it sounds, and check whether its numbers are right later. When a model gives a confident, wrong district population, the office that published it pays for the mistake. Official statistics only matter because the public trusts the figure.</p>
 
-          <p>So before Sanyu goes out as a public service of the Bureau, we wrote down the conditions we had to meet to feel safe releasing it. Five clauses, each one drawn from something the build itself forced on us. They're short enough to check.</p>
+          <p>So before the Bureau releases Sanyu to the public, we wrote down the conditions we had to meet first. There are five, and each one came from a problem we hit while building it. They're short enough to check.</p>
 
-          <h2>1. Figures originate in the statistical system</h2>
-          <p>The model selects what to retrieve; the database supplies the value. A number reaches the user only when a structured query returned it. This is the whole architecture in one sentence. The language model never generates a figure, it emits a typed function call, and the verified result is placed into the answer verbatim.</p>
+          <h2>1. Every figure comes from the statistical system</h2>
+          <p>The model chooses what to look up, and the database supplies the value. A number reaches the user only if a structured query returned it. That's the whole architecture in one sentence. The language model never writes a figure itself. It calls a typed function, and Sanyu copies the verified result into the answer word for word.</p>
 
           <h2>2. Every figure carries its source</h2>
-          <p>Source table, survey or census, reference period and geography travel with the value, in a form the user can follow back to the publication. Charts render from the same verified values as the surrounding text, so a picture can't disagree with its caption.</p>
+          <p>Each value travels with its source table and survey, so a reader can trace it to the printed report. Charts draw from the same verified values as the text around them, so a picture can't disagree with its caption.</p>
 
-          <h2>3. The system declines outside its data</h2>
-          <p>Where a question falls beyond published statistics, the correct response says so plainly. Silence about a limit counts as a defect. This one was harder to build than it sounds, because a fluent model would much rather answer.</p>
+          <h2>3. Sanyu says no outside its data</h2>
+          <p>When a question goes beyond the published statistics, the right answer says so plainly. Keeping quiet about a limit counts as a bug. This one was harder to build than it sounds, because a fluent model would much rather answer.</p>
 
-          <h2>4. Evaluation is published before launch</h2>
-          <p>A named benchmark with ground truth, plus a regression suite that asserts exact published figures, runs automatically on every build. Ours has 45 deterministic tests, including a set of golden facts that must match the printed census tables to the digit. The results are public.</p>
+          <h2>4. We publish the test results before launch</h2>
+          <p>A named benchmark with known answers runs on every build, along with regression tests that check exact published figures. Ours has 45 tests, including golden facts that must match the printed census tables to the digit. Anyone can see the results.</p>
 
           <h2>5. A statistician signs</h2>
-          <p>Generated narrative passes a named human reviewer before publication. The machine drafts; the office remains the author.</p>
+          <p>A named statistician reviews any text the model writes before it goes out. The machine drafts, and the office stays the author.</p>
 
-          <blockquote>The code demonstrates that the conditions are achievable, because the system standing beside it meets them.</blockquote>
+          <blockquote>Sanyu already meets all five.</blockquote>
 
-          <p>None of these rules is about a particular vendor or model. They're conditions any statistics office could adopt this year, and we'd like other offices to argue with them, adapt them, and tell us what we missed. The technical details of how Sanyu meets them are on the <a href="../#p-sanyu">work page</a>.</p>
+          <p>None of these rules depends on a particular vendor or model. Any statistics office could adopt them this year, and we'd like other offices to argue with them and tell us what we missed. The details of how Sanyu meets them are in <a href="../#p-sanyu">Sanyu's write-up</a>.</p>
         </div>
         <section class="reactions" aria-label="Hearts and comments">
           <button class="heart" type="button" aria-pressed="false" data-heart="2026-08-five-rules-for-ai-over-official-statistics">

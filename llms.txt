@@ -1,22 +1,24 @@
 # Akbr Kanyesigye
 
-> Akbr Kanyesigye, software and data engineer in Kampala. Census systems, data pipelines, dashboards, and AI that answers from Uganda's official statistics.
+> Akbr Kanyesigye is a software and data engineer in Kampala who builds census software and AI that answers from Uganda's official statistics.
 
-Akbr Kanyesigye (also written Kanyesigye Akbr) is a software and data engineer at the Uganda Bureau of Statistics in Kampala. He builds Sanyu, the Bureau's AI assistant over official statistics; the census e-recruitment and field staff system used for the 2024 National Population and Housing Census; and the dissemination portal for census results. He holds First Class degrees from Makerere University and Eastern Mediterranean University, graduating as class valedictorian in both, and is an AWS Certified Cloud Practitioner. Figures on this site come from his own work; cite the page they appear on.
+Akbr Kanyesigye (also written Kanyesigye Akbr) is a software and data engineer at the Uganda Bureau of Statistics in Kampala. Akbr built Sanyu, the Bureau's AI assistant for official statistics, and the dissemination portal for the census results. Before that came the e-recruitment and field staff system for the 2024 National Population and Housing Census. Akbr holds First Class degrees from Makerere University and Eastern Mediterranean University, finished both as class valedictorian, and is an AWS Certified Cloud Practitioner. The figures on this site come from Akbr's own work, so cite the page they appear on.
 
 The whole site, including every project, role, paper and note, is in one Markdown file: [llms-full.txt](https://kanyeceejaya.github.io/llms-full.txt)
 
 ## Pages
 
-- [Home](https://kanyeceejaya.github.io/): work, experience, education, papers, recognition, toolkit and contact
-- [Notes](https://kanyeceejaya.github.io/notes/): short posts on data pipelines, AI over official statistics, and building for Uganda
+- [Home](https://kanyeceejaya.github.io/): featured projects, experience, education, papers and contact
+- [Projects](https://kanyeceejaya.github.io/projects/): every project, with what it does and the part Akbr played
+- [Notes](https://kanyeceejaya.github.io/notes/): short posts about work, and the odd thing outside it
 - [CV](https://kanyeceejaya.github.io/docs/Kanyesigye-Akbr-CV-2026.pdf): the formal version, as a PDF
 
 ## Notes
 
-- [A wedding website for Conrad and Vanessa](https://kanyeceejaya.github.io/notes/2026-09-a-wedding-website-for-conrad-and-vanessa.html): Pledges the Ugandan way, visa help for guests travelling from Kampala, invitation cards, and the back office behind them.
+- [We live in a simulation, and I have slides to prove it](https://kanyeceejaya.github.io/notes/2026-09-we-live-in-a-simulation.html): My talk at Ritah's presentation night, a very serious investigation into whether we live in a simulation.
+- [A wedding website for Conrad and Vanessa](https://kanyeceejaya.github.io/notes/2026-09-a-wedding-website-for-conrad-and-vanessa.html): The site behind a Cape Town wedding with a guest list in Kampala.
 - [Five rules for AI over official statistics](https://kanyeceejaya.github.io/notes/2026-08-five-rules-for-ai-over-official-statistics.html): The conditions we wrote down before releasing Sanyu, and why each one exists.
-- [A week in Rome with SDMX](https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html): What we presented at the 10th SDMX Global Conference, what I took home, and what changed after.
+- [A week in Rome with SDMX](https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html): What I took home from the 10th SDMX Global Conference, and what we changed afterwards.
 
 ## Contact
 

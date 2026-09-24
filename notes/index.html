@@ -14,7 +14,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Notes, Akbr Kanyesigye</title>
-  <meta name="description" content="Short notes by Akbr Kanyesigye on data pipelines, AI over official statistics, and building software for Uganda.">
+  <meta name="description" content="Short notes by Akbr Kanyesigye, about work and the odd thing outside it.">
   <meta name="author" content="Akbr Kanyesigye">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">
@@ -27,7 +27,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kanyeceejaya.github.io/notes/">
   <meta property="og:title" content="Notes, Akbr Kanyesigye">
-  <meta property="og:description" content="Short notes by Akbr Kanyesigye on data pipelines, AI over official statistics, and building software for Uganda.">
+  <meta property="og:description" content="Short notes by Akbr Kanyesigye, about work and the odd thing outside it.">
   <meta property="og:image" content="https://kanyeceejaya.github.io/images/og-card.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
@@ -37,7 +37,7 @@
   <meta name="twitter:site" content="@kanyeceejay">
   <meta name="twitter:creator" content="@kanyeceejay">
   <meta name="twitter:title" content="Notes, Akbr Kanyesigye">
-  <meta name="twitter:description" content="Short notes by Akbr Kanyesigye on data pipelines, AI over official statistics, and building software for Uganda.">
+  <meta name="twitter:description" content="Short notes by Akbr Kanyesigye, about work and the odd thing outside it.">
   <meta name="twitter:image" content="https://kanyeceejaya.github.io/images/og-card.jpg">
   <meta name="twitter:image:alt" content="Akbr Kanyesigye, software and data engineer in Kampala, next to a tilted portrait photo.">
   <link rel="icon" href="../favicon.ico" sizes="48x48">
@@ -55,7 +55,7 @@
     "@type": "Blog",
     "name": "Notes by Akbr Kanyesigye",
     "url": "https://kanyeceejaya.github.io/notes/",
-    "description": "Short notes by Akbr Kanyesigye on data pipelines, AI over official statistics, and building software for Uganda.",
+    "description": "Short notes by Akbr Kanyesigye, about work and the odd thing outside it.",
     "inLanguage": "en-GB",
     "author": {
       "@type": "Person",
@@ -63,6 +63,18 @@
       "url": "https://kanyeceejaya.github.io/"
     },
     "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "We live in a simulation, and I have slides to prove it",
+        "url": "https://kanyeceejaya.github.io/notes/2026-09-we-live-in-a-simulation.html",
+        "datePublished": "2026-09-21"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "A wedding website for Conrad and Vanessa",
+        "url": "https://kanyeceejaya.github.io/notes/2026-09-a-wedding-website-for-conrad-and-vanessa.html",
+        "datePublished": "2026-09-15"
+      },
       {
         "@type": "BlogPosting",
         "headline": "Five rules for AI over official statistics",
@@ -103,9 +115,10 @@
         <ul>
           <li><a href="../#work">Work</a></li>
           <li><a href="../#experience">Experience</a></li>
-          <li><a href="../#education">Education</a></li>
-          <li><a href="../#papers">Papers</a></li>
           <li><a href="./" aria-current="true">Notes</a></li>
+          <li><a href="../#papers">Papers</a></li>
+          <li><a href="../#education">Education</a></li>
+          <li class="wide-only"><a href="../projects/">Projects</a></li>
           <li><a href="../#contact">Contact</a></li>
         </ul>
       </nav>
@@ -123,11 +136,12 @@
   <div id="menu" class="menu" hidden>
     <nav aria-label="Sections">
       <ol>
-        <li><a class="big" href="../#work"><span class="dot" aria-hidden="true"></span><span class="t">Work</span><span class="d">What I've built</span></a></li>
+        <li><a class="big" href="../#work"><span class="dot" aria-hidden="true"></span><span class="t">Work</span><span class="d">A few recent projects</span></a></li>
         <li><a class="big" href="../#experience"><span class="dot" aria-hidden="true"></span><span class="t">Experience</span><span class="d">Where I've worked</span></a></li>
-        <li><a class="big" href="../#education"><span class="dot" aria-hidden="true"></span><span class="t">Education</span><span class="d">Degrees, courses, certificates</span></a></li>
-        <li><a class="big" href="../#papers"><span class="dot" aria-hidden="true"></span><span class="t">Papers</span><span class="d">Things I've written</span></a></li>
         <li><a class="big" href="./" aria-current="true"><span class="dot" aria-hidden="true"></span><span class="t">Notes</span><span class="d">A tiny blog</span></a></li>
+        <li><a class="big" href="../#papers"><span class="dot" aria-hidden="true"></span><span class="t">Papers</span><span class="d">Things I've written</span></a></li>
+        <li><a class="big" href="../#education"><span class="dot" aria-hidden="true"></span><span class="t">Education</span><span class="d">What I've studied</span></a></li>
+        <li><a class="big" href="../projects/"><span class="dot" aria-hidden="true"></span><span class="t">Projects</span><span class="d">The full list</span></a></li>
         <li><a class="big" href="../#contact"><span class="dot" aria-hidden="true"></span><span class="t">Contact</span><span class="d">Say hello</span></a></li>
       </ol>
     </nav>
@@ -154,7 +168,7 @@
         <p class="crumbs"><a href="../">Home</a> / Notes</p>
         <header>
           <h1>Notes</h1>
-          <p class="when">Short posts on data pipelines, AI over official statistics, and building for Uganda.</p>
+          <p class="when">Short posts about my work, and the odd thing outside it.</p>
         </header>
 
         <!--
@@ -163,9 +177,14 @@
         -->
         <ol class="note-list">
           <li>
-            <span class="when">23 September 2026</span>
+            <span class="when">21 September 2026</span>
+            <a href="2026-09-we-live-in-a-simulation.html">We live in a simulation, and I have slides to prove it</a>
+            <p>My talk at Ritah's presentation night, a very serious investigation into whether we live in a simulation.</p>
+          </li>
+          <li>
+            <span class="when">15 September 2026</span>
             <a href="2026-09-a-wedding-website-for-conrad-and-vanessa.html">A wedding website for Conrad and Vanessa</a>
-            <p>Pledges the Ugandan way, visa help for guests travelling from Kampala, invitation cards, and the back office behind them.</p>
+            <p>The site behind a Cape Town wedding with a guest list in Kampala.</p>
           </li>
           <li>
             <span class="when">4 August 2026</span>
@@ -175,7 +194,7 @@
           <li>
             <span class="when">6 October 2025</span>
             <a href="2025-10-a-week-in-rome-with-sdmx.html">A week in Rome with SDMX</a>
-            <p>What we presented at the 10th SDMX Global Conference, what I took home, and what changed after.</p>
+            <p>What I took home from the 10th SDMX Global Conference, and what we changed afterwards.</p>
           </li>
         </ol>
       </div>

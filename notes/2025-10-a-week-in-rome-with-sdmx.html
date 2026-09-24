@@ -14,7 +14,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>A week in Rome with SDMX, Akbr Kanyesigye</title>
-  <meta name="description" content="Notes from the 10th SDMX Global Conference in Rome, where UBOS presented its AI-enabled statistics pipeline, and what changed back home.">
+  <meta name="description" content="What we presented at the 10th SDMX Global Conference in Rome, and what we changed back home.">
   <meta name="author" content="Akbr Kanyesigye">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">
@@ -27,7 +27,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html">
   <meta property="og:title" content="A week in Rome with SDMX, Akbr Kanyesigye">
-  <meta property="og:description" content="Notes from the 10th SDMX Global Conference in Rome, where UBOS presented its AI-enabled statistics pipeline, and what changed back home.">
+  <meta property="og:description" content="What we presented at the 10th SDMX Global Conference in Rome, and what we changed back home.">
   <meta property="og:image" content="https://kanyeceejaya.github.io/images/og-card.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
@@ -39,7 +39,7 @@
   <meta name="twitter:site" content="@kanyeceejay">
   <meta name="twitter:creator" content="@kanyeceejay">
   <meta name="twitter:title" content="A week in Rome with SDMX, Akbr Kanyesigye">
-  <meta name="twitter:description" content="Notes from the 10th SDMX Global Conference in Rome, where UBOS presented its AI-enabled statistics pipeline, and what changed back home.">
+  <meta name="twitter:description" content="What we presented at the 10th SDMX Global Conference in Rome, and what we changed back home.">
   <meta name="twitter:image" content="https://kanyeceejaya.github.io/images/og-card.jpg">
   <meta name="twitter:image:alt" content="Akbr Kanyesigye, software and data engineer in Kampala, next to a tilted portrait photo.">
   <link rel="icon" href="../favicon.ico" sizes="48x48">
@@ -56,7 +56,7 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "A week in Rome with SDMX",
-    "description": "Notes from the 10th SDMX Global Conference in Rome, where UBOS presented its AI-enabled statistics pipeline, and what changed back home.",
+    "description": "What we presented at the 10th SDMX Global Conference in Rome, and what we changed back home.",
     "datePublished": "2025-10-06",
     "dateModified": "2025-10-06",
     "url": "https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html",
@@ -105,9 +105,10 @@
         <ul>
           <li><a href="../#work">Work</a></li>
           <li><a href="../#experience">Experience</a></li>
-          <li><a href="../#education">Education</a></li>
-          <li><a href="../#papers">Papers</a></li>
           <li><a href="./" aria-current="true">Notes</a></li>
+          <li><a href="../#papers">Papers</a></li>
+          <li><a href="../#education">Education</a></li>
+          <li class="wide-only"><a href="../projects/">Projects</a></li>
           <li><a href="../#contact">Contact</a></li>
         </ul>
       </nav>
@@ -125,11 +126,12 @@
   <div id="menu" class="menu" hidden>
     <nav aria-label="Sections">
       <ol>
-        <li><a class="big" href="../#work"><span class="dot" aria-hidden="true"></span><span class="t">Work</span><span class="d">What I've built</span></a></li>
+        <li><a class="big" href="../#work"><span class="dot" aria-hidden="true"></span><span class="t">Work</span><span class="d">A few recent projects</span></a></li>
         <li><a class="big" href="../#experience"><span class="dot" aria-hidden="true"></span><span class="t">Experience</span><span class="d">Where I've worked</span></a></li>
-        <li><a class="big" href="../#education"><span class="dot" aria-hidden="true"></span><span class="t">Education</span><span class="d">Degrees, courses, certificates</span></a></li>
-        <li><a class="big" href="../#papers"><span class="dot" aria-hidden="true"></span><span class="t">Papers</span><span class="d">Things I've written</span></a></li>
         <li><a class="big" href="./" aria-current="true"><span class="dot" aria-hidden="true"></span><span class="t">Notes</span><span class="d">A tiny blog</span></a></li>
+        <li><a class="big" href="../#papers"><span class="dot" aria-hidden="true"></span><span class="t">Papers</span><span class="d">Things I've written</span></a></li>
+        <li><a class="big" href="../#education"><span class="dot" aria-hidden="true"></span><span class="t">Education</span><span class="d">What I've studied</span></a></li>
+        <li><a class="big" href="../projects/"><span class="dot" aria-hidden="true"></span><span class="t">Projects</span><span class="d">The full list</span></a></li>
         <li><a class="big" href="../#contact"><span class="dot" aria-hidden="true"></span><span class="t">Contact</span><span class="d">Say hello</span></a></li>
       </ol>
     </nav>
@@ -159,25 +161,25 @@
           <p class="when"><time datetime="2025-10-06">6 October 2025</time></p>
         </header>
         <div class="body">
-          <p>Ivan Atwiine and I spent last week at the 10th SDMX Global Conference in Rome, hosted by the Bank of Italy. Three days of plenaries, then two days of training. The theme was "Smarter data for better insights", and the invitation had asked for exactly the kind of work we do: AI and machine learning applied to statistical pipelines, and dissemination tools that people actually use.</p>
+          <p>Ivan Atwiine and I spent last week in Rome at the 10th SDMX Global Conference, which the Bank of Italy hosted. It ran for three days of plenaries and two days of training. The theme was "Smarter data for better insights", and the call for papers asked for exactly our kind of work: AI in statistical pipelines, and dissemination tools that people actually use.</p>
 
-          <p>We went to talk about the pipeline. The paper, "From fragmentation to intelligence", describes how UBOS pulls administrative, survey and census data straight from source systems into one platform, validates it on the way in, and publishes it through the national dashboard. The rule-based checks catch the obvious; the machine learning helps with anomalies, cleaning and classifying community-level submissions. It's the plumbing behind everything else the Bureau now does with data.</p>
+          <p>We went to talk about the pipeline. Our paper, "From fragmentation to intelligence", describes how UBOS pulls data straight from source systems into one platform and checks it on the way in, before it reaches the national dashboard. Rule-based checks catch the obvious problems, and machine learning helps spot odd values in what communities submit. It's the plumbing behind everything else the Bureau now does with data.</p>
 
           <h2>What I took home</h2>
 
-          <p><strong>SDMX is a join key, not a file format.</strong> I had been treating it as a way to publish. The better way to see it: once two datasets share the same concepts, code lists and dimensions, a question that crosses them becomes cheap to answer. That is precisely what a chatbot over official statistics needs. Most of the effort in grounding a language model is agreeing on what an indicator means, and SDMX is that agreement, written down.</p>
+          <p><strong>SDMX works as a join key.</strong> I had been treating it as a way to publish. But once two datasets share the same concepts and code lists, a question that spans both becomes cheap to answer. A chatbot over official statistics needs exactly that. Most of the work of grounding a language model is agreeing on what an indicator means, and SDMX writes that agreement down.</p>
 
-          <p><strong>Validation can be data too.</strong> The sessions on SDMX 3.0 and VTL, the validation and transformation language, described rules as something you exchange rather than something buried in a script. We write ours in Python. Some of them should probably live next to the data instead.</p>
+          <p><strong>Validation rules can be data too.</strong> The sessions on SDMX 3.0 and VTL, the validation and transformation language, treated rules as something offices share with each other. We write ours in Python scripts. Some of them should probably live next to the data instead.</p>
 
-          <p><strong>Everyone's problem is fragmentation.</strong> Central banks, statistical offices, international agencies: the stories differed in scale, not in kind. The exciting demos all rested on the boring, careful part, which is people agreeing on structure. That was reassuring. It is the part we can control.</p>
+          <p><strong>Everyone struggles with scattered data.</strong> Central banks and statistical offices told the same story at different sizes. The exciting demos all rested on the boring, careful part, which is people agreeing on structure. I found that reassuring, because it's the part we can control.</p>
 
-          <p>The two training days made the tooling concrete: data structure definitions, dataflows, registries. It's one thing to read the standard, another to build a dataflow with someone who has done it a hundred times and watch where they slow down.</p>
+          <p>The two training days made the tooling concrete. Reading the standard is one thing. Building a dataflow next to someone who has done it a hundred times, and watching where they slow down, teaches you more.</p>
 
           <h2>What changed back home</h2>
 
-          <p>We came back and started a prototype: take survey tables from the demographic and health survey and the household survey, and turn them into SDMX-ready structures. Reusable structure definitions by table shape rather than one per table, and a crosswalk of indicators so we can say quickly whether a figure exists in one survey, the other, or both. It's the first step toward cross-dataset retrieval, chatbot queries that span surveys, and briefs that write themselves from verified numbers.</p>
+          <p>When we got back, we started a prototype that turns tables from the demographic and health survey and the household survey into SDMX-ready structures. We define structures by table shape, so one definition covers many tables. A crosswalk of indicators tells us quickly which survey holds a given figure. It's a first step toward chatbot answers that draw on more than one survey.</p>
 
-          <p>Rome itself: warm, loud, and exactly as good at coffee as advertised.</p>
+          <p>As for Rome, it was warm, and the coffee was as good as everyone says.</p>
         </div>
         <section class="reactions" aria-label="Hearts and comments">
           <button class="heart" type="button" aria-pressed="false" data-heart="2025-10-a-week-in-rome-with-sdmx">

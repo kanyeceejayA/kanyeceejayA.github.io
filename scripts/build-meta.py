@@ -1,6 +1,10 @@
-"""Regenerate the machine-readable files from the HTML pages.
+"""Regenerate everything that is built from other pages.
 
-Writes llms.txt, llms-full.txt, sitemap.xml and notes/feed.xml.
+- Copies the projects marked data-featured in projects/index.html onto the home page.
+- Writes the two latest notes onto the home page, from the list in notes/index.html.
+- Lists every note in the structured data of notes/index.html.
+- Writes llms.txt, llms-full.txt, sitemap.xml and notes/feed.xml.
+
 Run it from the repository root after changing the content of the site:
 
     python scripts/build-meta.py
@@ -9,6 +13,7 @@ Needs Python 3.8+ and BeautifulSoup (pip install beautifulsoup4).
 """
 import datetime as dt
 import io
+import json
 import os
 import re
 from xml.sax.saxutils import escape
@@ -71,8 +76,65 @@ def section(soup, sid):
     return soup.find('section', id=sid)
 
 
+def between(page, name, block):
+    """Replace what sits between <!-- name:start --> and <!-- name:end --> in a page."""
+    start, end = '<!-- %s:start -->' % name, '<!-- %s:end -->' % name
+    html = read(page)
+    a, b = html.index(start) + len(start), html.index(end)
+    html = html[:a] + '\n' + block + html[b:]
+    write(page, html)
+
+
+def note_list():
+    """The notes, newest first, as listed in notes/index.html."""
+    idx = BeautifulSoup(read('notes/index.html'), 'html.parser')
+    out = []
+    for li in idx.select('.note-list li'):
+        a = li.select_one('a')
+        page = BeautifulSoup(read('notes/' + a['href']), 'html.parser')
+        og = page.find('meta', attrs={'property': 'og:image'})
+        out.append({'file': a['href'], 'title': a.get_text(strip=True), 'when': li.select_one('.when').get_text(strip=True),
+                    'date': page.select_one('time')['datetime'], 'summary': text(li, 'p'),
+                    'image': og['content'].replace(SITE, '') if og else 'images/og-card.jpg'})
+        thumb = 'images/notes/thumbs/%s.jpg' % a['href'][:-len('.html')]
+        if os.path.exists(os.path.join(ROOT, thumb)):
+            out[-1]['image'] = thumb
+    return out
+
+
+# ------------------------------------------------------------------ featured projects on the home page
+projects_html = read('projects/index.html')
+featured = re.findall(r'( *<article class="sheet[^"]*" id="p-[^"]+" data-featured.*?</article>)', projects_html, re.S)
+between('index.html', 'featured-projects', '\n\n'.join(f.replace('"../', '"') for f in featured) + '\n')
+
+# ------------------------------------------------------------------ the two latest notes on the home page
+NOTES = note_list()
+cards = ['        <ul class="note-cards">']
+for n in NOTES[:2]:
+    cards += ['          <li>',
+              '            <a class="note-card" href="notes/%s">' % n['file'],
+              '              <span class="note-card-img"><img src="%s" alt="" width="240" height="240" loading="lazy"></span>' % n['image'],
+              '              <span class="note-card-body">',
+              '                <span class="note-card-when">%s</span>' % escape(n['when']),
+              '                <span class="note-card-title">%s</span>' % escape(n['title']),
+              '                <span class="note-card-text">%s</span>' % escape(n['summary']),
+              '              </span>',
+              '            </a>',
+              '          </li>']
+cards.append('        </ul>')
+between('index.html', 'latest-notes', '\n'.join(cards) + '\n')
+
+# ------------------------------------------------------------------ every note in the notes index's structured data
+idx_html = read('notes/index.html')
+posts = ',\n'.join(
+    '      {\n        "@type": "BlogPosting",\n        "headline": %s,\n        "url": "%snotes/%s",\n        "datePublished": "%s"\n      }'
+    % (json.dumps(n['title'], ensure_ascii=False), SITE, n['file'], n['date']) for n in NOTES)
+idx_html = re.sub(r'"blogPost": \[.*?\n    \]', '"blogPost": [\n' + posts + '\n    ]', idx_html, flags=re.S)
+write('notes/index.html', idx_html)
+
 # ------------------------------------------------------------------ home page
 home = BeautifulSoup(read('index.html'), 'html.parser')
+projects = BeautifulSoup(projects_html, 'html.parser')
 lede = text(home, '.hero .lede')
 sub = text(home, '.hero .sub')
 description = home.find('meta', attrs={'name': 'description'})['content']
@@ -87,8 +149,8 @@ for li in section(home, 'now').select('.now-list li'):
     full.append('- ' + md(li))
 full.append('')
 
-full += ['## Work', '', 'Grouped by who the work serves.', '']
-for block in section(home, 'work').select('.group-block'):
+full += ['## Projects', '', 'Grouped by who the work serves. The full list is at %sprojects/.' % SITE, '']
+for block in section(projects, 'work').select('.group-block'):
     full += ['### ' + text(block, 'h3.group'), '']
     for sheet in block.select('article.sheet'):
         title = text(sheet, '.sheet-title')
@@ -110,7 +172,7 @@ for block in section(home, 'work').select('.group-block'):
             full.append('')
         stack = text(sheet, '.stack')
         if stack:
-            full += ['Built with ' + stack, '']
+            full += ['Stack: ' + stack, '']
         links = [a for a in sheet.select('.sheet-body > a.out')]
         if links:
             full += ['Links: ' + ', '.join('[%s](%s)' % (md(a), absolute(a['href'])) for a in links), '']
@@ -251,14 +313,15 @@ short = [
     '# Akbr Kanyesigye', '',
     '> ' + description, '',
     'Akbr Kanyesigye (also written Kanyesigye Akbr) is a software and data engineer at the Uganda Bureau of Statistics in Kampala. '
-    'He builds Sanyu, the Bureau\'s AI assistant over official statistics; the census e-recruitment and field staff system used for '
-    'the 2024 National Population and Housing Census; and the dissemination portal for census results. He holds First Class degrees '
-    'from Makerere University and Eastern Mediterranean University, graduating as class valedictorian in both, and is an AWS Certified '
-    'Cloud Practitioner. Figures on this site come from his own work; cite the page they appear on.', '',
+    'Akbr built Sanyu, the Bureau\'s AI assistant for official statistics, and the dissemination portal for the census results. '
+    'Before that came the e-recruitment and field staff system for the 2024 National Population and Housing Census. '
+    'Akbr holds First Class degrees from Makerere University and Eastern Mediterranean University, finished both as class valedictorian, '
+    'and is an AWS Certified Cloud Practitioner. The figures on this site come from Akbr\'s own work, so cite the page they appear on.', '',
     'The whole site, including every project, role, paper and note, is in one Markdown file: [llms-full.txt](%sllms-full.txt)' % SITE, '',
     '## Pages', '',
-    '- [Home](%s): work, experience, education, papers, recognition, toolkit and contact' % SITE,
-    '- [Notes](%snotes/): short posts on data pipelines, AI over official statistics, and building for Uganda' % SITE,
+    '- [Home](%s): featured projects, experience, education, papers and contact' % SITE,
+    '- [Projects](%sprojects/): every project, with what it does and the part Akbr played' % SITE,
+    '- [Notes](%snotes/): short posts about work, and the odd thing outside it' % SITE,
     '- [CV](%sdocs/Kanyesigye-Akbr-CV-2026.pdf): the formal version, as a PDF' % SITE, '',
     '## Notes', '']
 for n in notes:
@@ -272,7 +335,7 @@ short += ['', '## Contact', '',
 write('llms.txt', '\n'.join(short).rstrip() + '\n')
 
 # ------------------------------------------------------------------ sitemap
-urls = [(SITE, TODAY, '1.0'), (SITE + 'notes/', max([n['date'] for n in notes] + ['2025-01-01']), '0.7')]
+urls = [(SITE, TODAY, '1.0'), (SITE + 'projects/', TODAY, '0.8'), (SITE + 'notes/', max([n['date'] for n in notes] + ['2025-01-01']), '0.7')]
 urls += [(n['url'], n['date'], '0.6') for n in notes]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for loc, mod, pri in urls:
@@ -285,7 +348,7 @@ updated = max(n['date'] for n in notes) + 'T08:00:00Z' if notes else TODAY + 'T0
 feed = ['<?xml version="1.0" encoding="utf-8"?>',
         '<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB">',
         '  <title>Notes by Akbr Kanyesigye</title>',
-        '  <subtitle>Short posts on data pipelines, AI over official statistics, and building for Uganda.</subtitle>',
+        '  <subtitle>Short posts about work, and the odd thing outside it.</subtitle>',
         '  <link href="%snotes/feed.xml" rel="self" type="application/atom+xml"/>' % SITE,
         '  <link href="%snotes/" rel="alternate" type="text/html"/>' % SITE,
         '  <id>%snotes/</id>' % SITE,

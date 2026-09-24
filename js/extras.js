@@ -99,7 +99,7 @@
       console.table(Array.prototype.map.call(document.querySelectorAll('.work-groups .sheet'), function (s) {
         return { project: textOf(s, '.sheet-title'), what: textOf(s, '.sheet-what'), when: textOf(s, '.sheet-meta') };
       }));
-      return 'Click any row on the page for the full story.';
+      return 'Click any row for the full story. Every project is at ' + BASE + 'projects/';
     },
     now: function () {
       if (!onHome()) return fromHome('Now');
