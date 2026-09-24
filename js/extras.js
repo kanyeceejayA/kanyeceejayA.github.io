@@ -57,7 +57,7 @@
   function hello() {
     console.log('%cAkbr%c.', F.big, F.dot);
     console.log('%cHello, curious one. You opened the console, so we will probably get along.', F.lede);
-    console.log('%cThis site is plain HTML, CSS and a little JavaScript. No framework, no build step, no trackers.', F.text);
+    console.log('%cThis site is plain HTML and CSS with a little JavaScript. It has no framework and no build step.', F.text);
     console.log('%cType %chelp()%c to see what you can do from here.', F.text, F.cmd, F.text);
     console.log('%cGNU Terry Pratchett. A man is not dead while his name is still spoken.', F.quiet);
   }

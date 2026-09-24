@@ -2,7 +2,7 @@
 
 Personal site of Akbr Kanyesigye: <https://kanyeceejaya.github.io/>
 
-Plain HTML, CSS and a little JavaScript, served by GitHub Pages. No framework, no build step for the pages, no trackers.
+Plain HTML, CSS and a little JavaScript, served by GitHub Pages. No framework and no build step for the pages. Google Analytics (G-CWJ7QV586G) is in the head of every page, including notes/template.html.
 
 ## What lives where
 
