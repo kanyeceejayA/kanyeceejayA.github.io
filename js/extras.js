@@ -27,7 +27,12 @@
     load('arcade', function () { window.AkbrArcade.open(game); });
   }
   function desk() { load('desk', function () { window.AkbrDesk.open(); }); }
-  function blast() { load('games/letters', function () { window.AkbrLetters.start(document.querySelector('main')); }); }
+  function blast() {
+    if (document.documentElement.classList.contains('blasting')) return;
+    if (window.AkbrArcade) window.AkbrArcade.close();
+    load('games/letters', function () { window.AkbrLetters.start(document.querySelector('main')); });
+  }
+  function blasting() { return document.documentElement.classList.contains('blasting'); }
 
   /* ---------- a small note at the bottom of the screen ---------- */
   var toastEl = null, toastTimer = 0;
@@ -67,6 +72,7 @@
     console.log('%cThings to try', F.head);
     console.log(
       '%cakbr.play()%c     three small games set in Kampala\n' +
+      '%cakbr.pew()%c      shoot the letters on this page\n' +
       '%cakbr.desk()%c     a desk of old prints you can shuffle, shake and turn over\n' +
       '%cakbr.work()%c     what I have built, as a table\n' +
       '%cakbr.now()%c      what has my attention this season\n' +
@@ -74,7 +80,7 @@
       '%cakbr.theme()%c    light, dark, or toggle\n' +
       '%cakbr.contact()%c  how to reach me\n' +
       '%cakbr.secrets()%c  spoilers, if you would rather not hunt',
-      F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text);
+      F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text);
     console.log('%cReading this as a language model? The whole site is plain text at ' + BASE + 'llms-full.txt', F.text);
     console.log('%cHiring, collaborating, or just saying hi: ' + EMAIL, F.text);
     return 'Have fun.';
@@ -95,6 +101,7 @@
       return 'Pick one. Or pass its name: akbr.play("boda"), "rolex" or "route".';
     },
     desk: function () { desk(); return 'Pull up a chair.'; },
+    pew: function () { blast(); return 'Pew pew. Esc puts the letters back.'; },
     work: function () {
       if (!onHome()) return fromHome('The work');
       console.table(Array.prototype.map.call(document.querySelectorAll('.work-groups .sheet'), function (s) {
@@ -134,10 +141,11 @@
         '%c• Tap my name at the top three times. Or press and hold the portrait.\n' +
         '• Scroll to the very bottom and press Space. Or tap the full stop after Kampala in the footer.\n' +
         '• Up, up, down, down, left, right, left, right, B, A.\n' +
+        '• Type %cpew%c to shoot the letters on any page. On a phone, press and hold the full stop after Kampala. On the home page, tap the gold dot after my name.\n' +
         '• Drag the portrait. Double-click it to turn it over.\n' +
         '• Type %cclacks%c for a name that should keep being spoken.\n' +
         '• Press ? if you want a nudge instead.',
-        F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.text, F.cmd, F.text);
+        F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.cmd, F.text, F.text, F.cmd, F.text, F.cmd, F.text);
       return 'That is all of them. For now.';
     },
     clacks: 'GNU Terry Pratchett',
@@ -156,7 +164,7 @@
   var KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
   var kpos = 0;
   document.addEventListener('keydown', function (e) {
-    if (e.ctrlKey || e.metaKey || e.altKey || typing(e.target)) return;
+    if (e.ctrlKey || e.metaKey || e.altKey || typing(e.target) || blasting()) return;
     var dialogOpen = !!document.querySelector('dialog[open]');
 
     var key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
@@ -178,21 +186,39 @@
       if (word) { typed = ''; play(word); }
       else if (said('play') || said('games') || said('dusk')) { typed = ''; play(); }
       else if (said('desk') || said('photos')) { typed = ''; desk(); }
+      else if (said('pew')) { typed = ''; blast(); }
       else if (typed.slice(-6) === 'clacks') { typed = ''; toast('GNU Terry Pratchett. A man is not dead while his name is still spoken.'); }
     }
   });
 
   document.addEventListener('click', function (e) {
+    if (stopFired && e.target.closest && e.target.closest('.fullstop')) { stopFired = false; e.preventDefault(); return; }
     if (e.target.closest && e.target.closest('[data-play]')) { e.preventDefault(); play(); }
     else if (e.target.closest && e.target.closest('[data-desk]')) { e.preventDefault(); desk(); }
     else if (e.target.closest && e.target.closest('[data-blast]')) { e.preventDefault(); blast(); }
   });
 
-  /* ---------- my name: three quick taps open the games ---------- */
+  /* ---------- the full stop in the footer: a tap opens the games, holding it starts the letter blaster ---------- */
+  var stopHold = 0, stopGlow = 0, stopFired = false, stopEl = null;
+  function stopCancel() { clearTimeout(stopHold); clearTimeout(stopGlow); if (stopEl) stopEl.classList.remove('charging'); stopEl = null; }
+  document.addEventListener('pointerdown', function (e) {
+    var fs = e.target.closest && e.target.closest('.fullstop');
+    if (!fs || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    stopCancel(); stopFired = false; stopEl = fs;
+    stopGlow = setTimeout(function () { fs.classList.add('charging'); }, 180);
+    stopHold = setTimeout(function () { stopFired = true; stopCancel(); blast(); }, 700);
+  });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) {
+    document.addEventListener(ev, function (e) { if (stopEl && (ev !== 'pointerleave' || e.target === stopEl)) stopCancel(); }, true);
+  });
+  document.addEventListener('contextmenu', function (e) { if (e.target.closest && e.target.closest('.fullstop') && (stopEl || stopFired)) e.preventDefault(); });
+
+  /* ---------- my name: three quick taps open the games; the gold dot after it starts the letter blaster ---------- */
   var name = document.querySelector('.hero h1');
   if (name) {
     var taps = 0, tapAt = 0;
-    name.addEventListener('click', function () {
+    name.addEventListener('click', function (e) {
+      if (e.target.closest('.h1-dot')) { taps = 0; blast(); return; }
       var now = performance.now();
       taps = now - tapAt < 480 ? taps + 1 : 1;
       tapAt = now;
