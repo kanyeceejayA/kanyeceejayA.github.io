@@ -11,7 +11,7 @@
   /* ---------- load the heavier pieces only when someone finds them ---------- */
   var loading = {};
   function load(name, cb) {
-    var ready = name === 'arcade' ? window.AkbrArcade : window.AkbrDesk;
+    var ready = { arcade: window.AkbrArcade, desk: window.AkbrDesk, 'games/letters': window.AkbrLetters }[name];
     if (ready) { cb(); return; }
     if (loading[name]) { loading[name].push(cb); return; }
     loading[name] = [cb];
@@ -27,6 +27,7 @@
     load('arcade', function () { window.AkbrArcade.open(game); });
   }
   function desk() { load('desk', function () { window.AkbrDesk.open(); }); }
+  function blast() { load('games/letters', function () { window.AkbrLetters.start(document.querySelector('main')); }); }
 
   /* ---------- a small note at the bottom of the screen ---------- */
   var toastEl = null, toastTimer = 0;
@@ -184,6 +185,7 @@
   document.addEventListener('click', function (e) {
     if (e.target.closest && e.target.closest('[data-play]')) { e.preventDefault(); play(); }
     else if (e.target.closest && e.target.closest('[data-desk]')) { e.preventDefault(); desk(); }
+    else if (e.target.closest && e.target.closest('[data-blast]')) { e.preventDefault(); blast(); }
   });
 
   /* ---------- my name: three quick taps open the games ---------- */
