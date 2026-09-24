@@ -2,7 +2,7 @@
 
 > Akbr Kanyesigye, software and data engineer in Kampala. Census systems, data pipelines, dashboards, and AI that answers from Uganda's official statistics.
 
-This is the full plain-text version of https://kanyeceejaya.github.io/, generated from the site on 2026-09-23. A shorter index lives at https://kanyeceejaya.github.io/llms.txt.
+This is the full plain-text version of https://kanyeceejaya.github.io/, generated from the site on 2026-09-24. A shorter index lives at https://kanyeceejaya.github.io/llms.txt.
 
 ## About
 
@@ -111,19 +111,17 @@ Links: [The skill on GitHub](https://github.com/kanyeceejayA/csync/tree/main/ski
 
 ### Civic platforms
 
-#### [National Youth Council accountability platform](https://www.nyc.go.ug/funding) (2024, web platform)
+#### National Youth Council accountability platform (2024, web platform)
 
 Where Uganda's youth council shows its money.
 
 A public accountability platform for the National Youth Council of Uganda: every project with its location, timeline, budget, funding sources and expenditure updates, downloadable reports, and a way for young people to leave feedback on what was done. Built in 2024 with the support of Konrad-Adenauer-Stiftung.
 
-Links: [nyc.go.ug/funding](https://www.nyc.go.ug/funding)
-
 #### Uchaguzi (2021, mobile app, chatbot and site)
 
 Voter information for Uganda's 2021 general elections.
 
-A website, a WhatsApp chatbot and Android and iOS apps that explained how to register, where to vote and what the rules were, for the Ministry of ICT's Government Citizen Interaction Centre with Konrad-Adenauer-Stiftung. I led the team.
+A website, a WhatsApp chatbot and Android and iOS apps that explained how to register, where to vote and what the rules were, for the Ministry of ICT's Government Citizen Interaction Centre and the Electoral Commission, with Konrad-Adenauer-Stiftung. I led the team.
 
 - 10,000+: people served during the election
 
@@ -141,7 +139,7 @@ Courses, quizzes, certificates and a forum for the Great Lakes Youth Network for
 
 Built with Flutter, with offline caching for patchy networks.
 
-Links: [Android](https://play.google.com/store/apps/details?id=ug.rtl.youth_action_handbook), [iOS](https://apps.apple.com/ug/app/youth-action-handbook/id1614617118)
+Links: [Android](https://play.google.com/store/apps/details?id=ug.rtl.youth_action_handbook), [iOS, archived listing](https://web.archive.org/web/20220626001000/https://apps.apple.com/ug/app/youth-action-handbook/id1614617118)
 
 Screenshot: Four Youth Action Handbook app screens: home, sign in, a course, and a quiz (https://kanyeceejaya.github.io/images/youth-action-handbook.jpg)
 
@@ -159,9 +157,13 @@ Links: [100.mak.ac.ug](https://100.mak.ac.ug/)
 
 Budget collection for Yemen's Ministry of Finance, with or without internet.
 
-Spending units create budget requests with guided inputs or CSV files in a cross-platform app; where there's no connectivity, the backend exchanges data over an SMS gateway.
+Spending units create budget requests with guided inputs or CSV files in a cross-platform app; where there's no connectivity, the backend exchanges data over an SMS gateway, with each request encrypted. It shared first place at the Yemen Public Financial Management Hackathon, run by the Ministry of Finance with the IMF in Amman in March 2023.
+
+- 1st: place, shared, with a USD 5,000 grant
 
 Built with Expo and React Native, MongoDB, Twilio.
+
+Links: [The hackathon results, archived](https://web.archive.org/web/20230324201431/https://yemenpfmhackathon.com/)
 
 ### Products and open source
 
@@ -181,7 +183,7 @@ Screenshot: The TuuraHub landing page: 'Manage every rental, without the chase' 
 
 Sign in without passwords, in Flutter.
 
-An open-source plugin for FIDO2 and WebAuthn: register authenticators, sign challenges and talk to your server, on Android, iOS, Windows and web. Built during my master's, with a companion server.
+An open-source plugin for FIDO2 and WebAuthn: register authenticators, sign challenges and talk to your server, on Android, iOS and Windows, with web support in progress. Built during my master's, with a companion server.
 
 Links: [On GitHub](https://github.com/kanyeceejayA/flutter_fido2)
 
@@ -264,7 +266,7 @@ Before university: learned to sell, count stock, run a floor team, and keep book
 ### Degrees
 
 - **MSc Information Technology**, Eastern Mediterranean University, Famagusta, Cyprus (Feb 2021 to Jul 2022). First Class, 4.0 of 4.0 CGPA, class valedictorian. Built a Flutter plugin for password-less FIDO2 authentication as the main project. Coursework went deep on project management.
-- **BSc Information Systems**, Makerere University, Kampala (Sep 2015 to Jan 2019). First Class, class valedictorian. Final-year project: a school shuttle tracking platform with web and Android apps. Active in the Rotaract Club of Makerere.
+- **BSc Information Systems**, Makerere University, Kampala (Sep 2015 to Jan 2019). First Class, 4.47 of 5 CGPA, class valedictorian. Final-year project: a school shuttle tracking platform with web and Android apps. Active in the Rotaract Club of Makerere.
 
 ### Programmes and courses
 
@@ -277,14 +279,14 @@ Before university: learned to sell, count stock, run a floor team, and keep book
 ### Certifications
 
 - **AWS Certified Cloud Practitioner**, Amazon Web Services (Sep 2025). Valid to Sep 2028
-- **Blockchain Innovation Program**, BSV Blockchain (Feb 2023)
+- **Blockchain Innovation Program**, BSV Blockchain (Feb 2023). A ten-week course from the BSV Academy on hash functions, Merkle trees, digital signatures and Bitcoin development in Go and JavaScript. The East Africa cohort ran in Kampala from October 2022, with CapitalSavvy and Satoshi Block Dojo. [About the programme](https://bip.capitalsavvy.pro/)
 - **Azure Data Fundamentals, DP-900**, Microsoft (In progress)
 
 ## Papers and talks
 
 ### Presented and accepted
 
-- **Centralised validation and AI report generation: accelerating statistical dissemination at an NSO** (2026, poster, accepted). Akbr Kanyesigye, Ivan Atwiine, Francis Kayondo, Lawrence Mugula. DSSV 2026, the conference on Data Science, Statistics and Visualisation, Trento, 29 June to 1 July 2026.
+- **Centralised validation and AI report generation: accelerating statistical dissemination at an NSO** (2026, poster). Akbr Kanyesigye, Ivan Atwiine, Francis Kayondo, Lawrence Mugula. DSSV 2026, the conference on Data Science, Statistics and Visualisation, Trento, 29 June to 1 July 2026, in the poster sessions on 29 and 30 June. The system was shown on poverty indicators from the Uganda National Household Survey and the 2024 census preliminary results. [The abstract](http://datascience.maths.unitn.it/dssv2026/abstracts/DSSV2026BookOfAbstracts.pdf), page 47 of the book of abstracts.
 - **The impact of digital media and artificial intelligence on governance, national security, public opinion and socio-economic development in Uganda** (2026, presentation). Syndicate 2, National Leadership Institute, Kyankwanzi. Political Education, Transformative and Leadership Development Course, National Leadership Institute, Kyankwanzi, July 2026. Both sides of the question, from online services and census tablets to deepfakes, cybercrime and the 2024 breach at the Bank of Uganda.
 - **From fragmentation to intelligence: automating national statistics with AI and machine learning** (2025, presented). Akbr Kanyesigye, Doreen Kirungi Maina, Ivan Atwiine, Allan Agaba. 10th SDMX Global Conference, Rome, 29 September to 3 October 2025, hosted by the Bank of Italy. [What I took home](https://kanyeceejaya.github.io/notes/2025-10-a-week-in-rome-with-sdmx.html).
 - **Bringing FIDO2 to Flutter: development of a password-less authentication package for a cross-platform development framework** (2022, paper). Akbr Kanyesigye, supervised by Prof. Dr. Ahmet Rizaner. Eastern Mediterranean University, June 2022. The package is open source as [flutter_fido2](https://github.com/kanyeceejayA/flutter_fido2). Also given as a talk later that year, "Forget passwords: introducing password-less authentication using FIDO2".
@@ -304,7 +306,7 @@ Before university: learned to sell, count stock, run a floor team, and keep book
 - 2024: Employee of the year (Best-performing staff member on the Census appraisal, UBOS)
 - 2022: [Class valedictorian, 4.0 of 4.0](https://kanyeceejaya.github.io/#ed-emu) (MSc Information Technology, Eastern Mediterranean University)
 - 2019: Appointed to the 4th Industrial Revolution Taskforce (Presidential appointment, Ministry of ICT and National Guidance)
-- 2019: [Class valedictorian, First Class honours](https://kanyeceejaya.github.io/#ed-mak) (BSc Information Systems, Makerere University)
+- 2019: Class valedictorian, First Class honours (BSc Information Systems, Makerere University)
 - 2017: [Editor, Airtern magazine](https://kanyeceejaya.github.io/#xp-airtel) (Airtel Uganda's intern publication)
 
 ## Stories behind some of these
@@ -337,6 +339,8 @@ Along the way I built my classmates a small offline revision site, with flashcar
 
 Links: [See the paper](https://kanyeceejaya.github.io/#pp-nali), [See it under education](https://kanyeceejaya.github.io/#ed-nali)
 
+Photo caption: UBOS staff at the National Leadership Institute, Kyankwanzi, July 2026. Courtesy photo, via [New Vision](https://www.newvision.co.ug/category/news/ubos-staff-learn-swahili-self-defence-and-lea-NV_237811_072026).
+
 ### UBOS Innovation Award
 
 Uganda Bureau of Statistics, 2025
@@ -367,6 +371,16 @@ It sits behind the day job: I architect and run the Bureau's AWS and GCP estate,
 
 Links: [Verify it on Credly](https://www.credly.com/badges/e7259f2c-476b-438c-b92f-f4642edbecc7)
 
+### First Class, Makerere, 2019
+
+BSc Information Systems. 69th graduation ceremony, January 2019.
+
+Makerere's 69th graduation ran from 15 to 18 January 2019. Of 13,333 graduates, 368 earned first-class degrees. The Academic Registrar's list has me as the one first class in Information Systems that year, with a CGPA of 4.47 out of 5.
+
+Links: [The full list (PDF)](https://eagle.co.ug/wp-content/uploads/2019/01/Makerere-AR-69th-Graduation-Ceremony-First-Class-List.pdf), [Makerere's announcement](https://news.mak.ac.ug/2019/01/mak-69th-graduation-ceremony-first-class-lists/)
+
+Photo caption: From the Academic Registrar's list of first-class degrees for the 69th graduation.
+
 ### Huduma Fellow, class of 2026
 
 LéO Africa Institute and Konrad-Adenauer-Stiftung
@@ -375,7 +389,9 @@ Huduma is Swahili for service. The fellowship is a leadership programme for peop
 
 Fellows meet for seminars and workshops on leadership, public affairs and policy making, and go back to their workplaces in between, with mentorship, study tours and a project along the way. I joined the 2026 class from the Uganda Bureau of Statistics.
 
-Links: [About the Huduma Fellowship](https://leoafricainstitute.org/programs/huduma-fellowship)
+**Akbr Kanyesigye**IT Officer, Uganda Bureau of StatisticsAs listed among the Huduma Fellows
+
+Links: [See the fellows](https://leoafricainstitute.org/programs/huduma-fellowship)
 
 ## Toolkit
 
