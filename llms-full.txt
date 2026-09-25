@@ -2,7 +2,7 @@
 
 > Akbr Kanyesigye is a software and data engineer in Kampala who builds census software and AI that answers from Uganda's official statistics.
 
-This is the full plain-text version of https://kanyeceejaya.github.io/, generated from the site on 2026-09-24. A shorter index lives at https://kanyeceejaya.github.io/llms.txt.
+This is the full plain-text version of https://kanyeceejaya.github.io/, generated from the site on 2026-09-25. A shorter index lives at https://kanyeceejaya.github.io/llms.txt.
 
 ## About
 

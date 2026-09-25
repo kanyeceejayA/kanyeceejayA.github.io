@@ -31,7 +31,9 @@ After changing content, refresh the machine-readable files:
 python scripts/build-meta.py
 ```
 
-That copies the featured projects and the two latest notes onto the home page, lists every note in the structured data of `notes/index.html`, and rewrites `llms.txt`, `llms-full.txt`, `sitemap.xml` and `notes/feed.xml`. It needs BeautifulSoup (`pip install beautifulsoup4`).
+When you change a note's text in a way readers would notice, update its `dateModified`; the sitemap and the feed take their dates from it. The home and projects pages take theirs from their last commit.
+
+The build script copies the featured projects and the two latest notes onto the home page, lists every note in the structured data of `notes/index.html`, and rewrites `llms.txt`, `llms-full.txt`, `sitemap.xml` and `notes/feed.xml`. It needs BeautifulSoup (`pip install beautifulsoup4`).
 
 ## Machine-readable files
 

@@ -16,6 +16,7 @@ import io
 import json
 import os
 import re
+import subprocess
 from xml.sax.saxutils import escape
 
 from bs4 import BeautifulSoup, NavigableString, Tag
@@ -34,6 +35,17 @@ def write(path, text):
     with io.open(os.path.join(ROOT, path), 'w', encoding='utf-8', newline='\n') as f:
         f.write(text)
     print('wrote', path, len(text.encode('utf-8')), 'bytes')
+
+
+def changed_on(path):
+    """The day a file last changed: today if it has uncommitted edits, otherwise its last commit."""
+    try:
+        run = lambda *a: subprocess.run(['git'] + list(a), cwd=ROOT, capture_output=True, text=True).stdout.strip()
+        if run('status', '--porcelain', '--', path):
+            return TODAY
+        return run('log', '-1', '--format=%cs', '--', path) or TODAY
+    except OSError:
+        return TODAY
 
 
 def absolute(href, base=SITE):
@@ -296,6 +308,7 @@ for li in notes_index.select('.note-list li'):
             paras += [md(el), '']
     notes.append({
         'title': md(a), 'url': SITE + 'notes/' + fn, 'date': t['datetime'], 'human': md(t),
+        'modified': (re.search(r'"dateModified": "([0-9-]+)"', str(page)) or re.search(r'()', ''))[1] or t['datetime'],
         'summary': text(li, 'p'),
         'description': page.find('meta', attrs={'name': 'description'})['content'],
         'body': paras, 'html': str(body)
@@ -335,8 +348,10 @@ short += ['', '## Contact', '',
 write('llms.txt', '\n'.join(short).rstrip() + '\n')
 
 # ------------------------------------------------------------------ sitemap
-urls = [(SITE, TODAY, '1.0'), (SITE + 'projects/', TODAY, '0.8'), (SITE + 'notes/', max([n['date'] for n in notes] + ['2025-01-01']), '0.7')]
-urls += [(n['url'], n['date'], '0.6') for n in notes]
+# lastmod follows real changes: a note's dateModified, and the last commit of the home and projects pages
+urls = [(SITE, changed_on('index.html'), '1.0'), (SITE + 'projects/', changed_on('projects/index.html'), '0.8'),
+        (SITE + 'notes/', max([n['modified'] for n in notes] + ['2025-01-01']), '0.7')]
+urls += [(n['url'], n['modified'], '0.6') for n in notes]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for loc, mod, pri in urls:
     sm.append('  <url><loc>%s</loc><lastmod>%s</lastmod><priority>%s</priority></url>' % (loc, mod, pri))
@@ -344,7 +359,7 @@ sm.append('</urlset>')
 write('sitemap.xml', '\n'.join(sm) + '\n')
 
 # ------------------------------------------------------------------ Atom feed for the notes
-updated = max(n['date'] for n in notes) + 'T08:00:00Z' if notes else TODAY + 'T08:00:00Z'
+updated = max(n['modified'] for n in notes) + 'T08:00:00Z' if notes else TODAY + 'T08:00:00Z'
 feed = ['<?xml version="1.0" encoding="utf-8"?>',
         '<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB">',
         '  <title>Notes by Akbr Kanyesigye</title>',
@@ -364,7 +379,7 @@ for n in notes:
              '    <link href="%s" rel="alternate" type="text/html"/>' % n['url'],
              '    <id>%s</id>' % n['url'],
              '    <published>%sT08:00:00Z</published>' % n['date'],
-             '    <updated>%sT08:00:00Z</updated>' % n['date'],
+             '    <updated>%sT08:00:00Z</updated>' % n['modified'],
              '    <summary>%s</summary>' % escape(n['description']),
              '    <content type="html">%s</content>' % escape(body),
              '  </entry>']
