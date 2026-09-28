@@ -2,7 +2,7 @@
 
 > Akbr Kanyesigye is a software and data engineer in Kampala who builds census software and AI that answers from Uganda's official statistics.
 
-This is the full plain-text version of https://kanyeceejaya.github.io/, generated from the site on 2026-09-25. A shorter index lives at https://kanyeceejaya.github.io/llms.txt.
+This is the full plain-text version of https://kanyeceejaya.github.io/, generated from the site on 2026-09-28. A shorter index lives at https://kanyeceejaya.github.io/llms.txt.
 
 ## About
 
@@ -301,34 +301,34 @@ Before university I sold tyres, and later supervised the floor team and its book
 ## Recognition
 
 - 2026: Huduma Fellow, class of 2026 (LéO Africa Institute and Konrad-Adenauer-Stiftung)
-- 2026: Completed the leadership course at Kyankwanzi (National Leadership Institute, 30 July 2026)
+- 2026: Completed the leadership course at Kyankwanzi (National Leadership Institute)
 - 2025: UBOS Innovation Award (Uganda Bureau of Statistics)
 - 2025: AWS Certified Cloud Practitioner (Amazon Web Services, valid to 2028)
 - 2024: Employee of the year (Best-performing staff member on the Census appraisal, UBOS)
-- 2022: [Class valedictorian, 4.0 of 4.0](https://kanyeceejaya.github.io/#ed-emu) (MSc Information Technology, Eastern Mediterranean University)
+- 2022: Class valedictorian, 4.0 of 4.0 (MSc Information Technology, Eastern Mediterranean University)
 - 2019: Appointed to the 4th Industrial Revolution Taskforce (Presidential appointment, Ministry of ICT and National Guidance)
 - 2019: Class valedictorian, First Class honours (BSc Information Systems, Makerere University)
-- 2017: [Editor, Airtern magazine](https://kanyeceejaya.github.io/#xp-airtel) (Airtel Uganda's intern publication)
+- 2017: Editor, Airtern magazine (Airtel Uganda's intern publication)
 
 ## Stories behind some of these
 
 ### The 4th Industrial Revolution Taskforce
 
-April 2019 to January 2021
+Presidential appointment, Ministry of ICT and National Guidance
 
-In April 2019 President Museveni set up a 21-member expert taskforce to study the technologies of the fourth industrial revolution and advise the government on how Uganda should adopt them. Former ICT minister John Nasasira chaired it.
+President Museveni set up a 21-member expert taskforce to study the technologies of the fourth industrial revolution and advise the government on how Uganda should adopt them. Former ICT minister John Nasasira chaired it.
 
 I joined from the Ministry of ICT's Government Citizen Interaction Centre, a few months after finishing university, and met the President with the rest of the team when he launched it.
 
-Over the next eighteen months we studied how other countries were preparing, and wrote the report that became Uganda's national 4IR strategy. It sets out how Uganda can become a 4IR hub by 2040. The draft went public in October 2020, and the final report reached the Prime Minister in December 2022.
+Over the next eighteen months we studied how other countries were preparing, and wrote the report that became Uganda's national 4IR strategy. It sets out how Uganda can become a 4IR hub.
 
 Links: [Read the appointment on the Ministry of ICT site](https://dmu.ict.go.ug/he-museveni-appoints-4th-industrial-revolution-taskforce)
 
-Photo caption: President Museveni talks to Akbr Kanyesigye at the launch, as ICT Minister Frank Tumwebaze looks on. April 2019. Photo: Ministry of ICT and National Guidance.
+Photo caption: President Museveni talks to Akbr Kanyesigye at the launch, as ICT Minister Frank Tumwebaze looks on. Photo: Ministry of ICT and National Guidance.
 
-### Kyankwanzi, 2026
+### Kyankwanzi
 
-Political Education, Transformative and Leadership Development Course. National Leadership Institute, Kyankwanzi. Completed 30 July 2026.
+Political Education, Transformative and Leadership Development Course. National Leadership Institute, Kyankwanzi.
 
 A residential course about loving and serving your country. The lectures covered Uganda's history since before colonial rule, and what patriotism asks of a public servant. We also sang in Kiswahili and marched in formation.
 
@@ -340,19 +340,19 @@ Along the way I built my classmates a small offline revision site. It had mock e
 
 Links: [See the paper](https://kanyeceejaya.github.io/#pp-nali), [See it under education](https://kanyeceejaya.github.io/#ed-nali)
 
-Photo caption: UBOS staff at the National Leadership Institute, Kyankwanzi, July 2026. Courtesy photo, via [New Vision](https://www.newvision.co.ug/category/news/ubos-staff-learn-swahili-self-defence-and-lea-NV_237811_072026).
+Photo caption: UBOS staff at the National Leadership Institute, Kyankwanzi. Courtesy photo, via [New Vision](https://www.newvision.co.ug/category/news/ubos-staff-learn-swahili-self-defence-and-lea-NV_237811_072026).
 
 ### UBOS Innovation Award
 
-Uganda Bureau of Statistics, 2025
+Uganda Bureau of Statistics
 
-The Bureau gave me its innovation award for 2025, for the dissemination portal and for Sanyu. The portal put the 2024 census results online down to parish level, and Sanyu answers questions from those figures and cites each one.
+The Bureau gave me its innovation award for the dissemination portal and for Sanyu. The portal put the 2024 census results online down to parish level, and Sanyu answers questions from those figures and cites each one.
 
 Links: [About Sanyu](https://kanyeceejaya.github.io/#p-sanyu), [About the portal](https://kanyeceejaya.github.io/#p-portal)
 
 ### Employee of the year
 
-Uganda Bureau of Statistics, 2024
+Uganda Bureau of Statistics
 
 The Bureau's appraisal for the 2024 National Population and Housing Census ranked me its best-performing staff member. I worked on nearly every stage of the census that year.
 
@@ -372,15 +372,25 @@ I use it every day, because I set up and run the Bureau's servers on AWS and GCP
 
 Links: [Verify it on Credly](https://www.credly.com/badges/e7259f2c-476b-438c-b92f-f4642edbecc7)
 
-### First Class, Makerere, 2019
+### First Class, Makerere
 
-BSc Information Systems. 69th graduation ceremony, January 2019.
+BSc Information Systems, Makerere University
 
-Makerere's 69th graduation ran from 15 to 18 January 2019. Of 13,333 graduates, 368 earned first-class degrees. The Academic Registrar's list has me as the one first class in Information Systems that year, with a CGPA of 4.47 out of 5.
+I finished as the best-performing student in my college, the College of Computing and Information Sciences, and graduated with First Class honours as class valedictorian.
 
-Links: [The full list (PDF)](https://eagle.co.ug/wp-content/uploads/2019/01/Makerere-AR-69th-Graduation-Ceremony-First-Class-List.pdf), [Makerere's announcement](https://news.mak.ac.ug/2019/01/mak-69th-graduation-ceremony-first-class-lists/)
+Photo caption: My name on Makerere's first-class list.
 
-Photo caption: From the Academic Registrar's list of first-class degrees for the 69th graduation.
+### Class valedictorian, Eastern Mediterranean University
+
+MSc Information Technology, Famagusta, Cyprus
+
+I finished my master's with a perfect 4.0 and First Class honours, and graduated as class valedictorian. My main project was a Flutter plugin that lets people sign in with FIDO2 instead of a password.
+
+### Editor, Airtern magazine
+
+Airtel Uganda's intern publication
+
+I edited Airtern, the magazine Airtel Uganda's interns write and publish. I was an intern in IT operations at the time, where I also led the intern team that built a leave system on Oracle Application Express.
 
 ### Huduma Fellow, class of 2026
 
@@ -389,8 +399,6 @@ LéO Africa Institute and Konrad-Adenauer-Stiftung
 Huduma is Swahili for service. The fellowship is a leadership programme for people who serve in Uganda's public and civic sectors, and each class takes in 15 fellows.
 
 Fellows meet for seminars and workshops, and go back to their jobs in between to put the ideas to work, with mentors along the way. I joined the 2026 class from the Uganda Bureau of Statistics.
-
-**Akbr Kanyesigye**IT Officer, Uganda Bureau of StatisticsAs listed among the Huduma Fellows
 
 Links: [See the fellows](https://leoafricainstitute.org/programs/huduma-fellowship)
 

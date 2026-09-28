@@ -6,11 +6,17 @@
 
   var BASE = (window.AKBR_BASE || '');
   var PRINTS = [
-    { src: 'images/akbr.jpg', front: 'Kampala, 2024', back: 'The official one. You just turned a photo over on a website. I respect that.' },
+    { src: 'images/akbr.jpg', front: 'Kampala', back: 'The official one. You just turned a photo over on a website. I respect that.' },
     { src: 'images/desk/suit.jpg', front: 'Suit day', back: 'Three pieces, one tie, and a railing to lean on.' },
-    { src: 'images/akbr-kanyesigye-talks-to-he-president-museveni.jpg', front: 'State House, 2019', back: 'The handshake at the launch of the 4th Industrial Revolution Taskforce, April 2019.' },
+    { src: 'images/akbr-kanyesigye-talks-to-he-president-museveni.jpg', front: 'State House', back: 'The handshake at the launch of the 4th Industrial Revolution Taskforce.' },
+    { src: 'images/desk/talk.jpg', front: 'Presentation night', back: 'Me making the case that we live in a simulation. 25 slides, straight face.' },
+    { src: 'images/desk/boda.jpg', front: 'The boda files', back: 'A friend proving that boda riders are a nationwide intelligence network. How else does the boda guy know everything?' },
+    { src: 'images/desk/jim-carrey.jpg', front: 'The Jim Carrey Files', back: 'Another friend showing that the Jim Carrey we see today is a clone. He had evidence.' },
+    { src: 'images/desk/king.jpg', front: 'A king is born', back: 'Not elected. The last case of the night.' },
+    { src: 'images/desk/kyankwanzi.jpg', front: 'Kyankwanzi', back: 'UBOS staff at the National Leadership Institute, in fatigues. Mornings started with drill.', stamp: 'Kyankwanzi' },
+    { src: 'images/desk/huduma.jpg', front: 'Huduma Fellow', back: 'The welcome card for the Huduma Fellowship class of 2026.' },
     { src: 'images/desk/kampala-night.jpg', front: 'Kampala after dark', back: 'The city from up high. Somewhere down there, a census tablet is syncing.' },
-    { src: 'images/desk/kampala-day.jpg', front: 'Kampala by day', back: 'Red roofs to the horizon. Every one of those households was counted in 2024.' }
+    { src: 'images/desk/kampala-day.jpg', front: 'Kampala by day', back: 'Red roofs to the horizon. The census counted every one of those households.' }
   ];
 
   var dlg, table, z = 10, devTimer = 0, loaded = 0;
@@ -61,6 +67,7 @@
       });
       el.querySelector('figcaption').textContent = p.front;
       el.querySelector('.dback p').textContent = p.back;
+      if (p.stamp) el.querySelector('.dstamp').textContent = p.stamp;
       el._dev = 0;
       wire(el);
       table.appendChild(el);
